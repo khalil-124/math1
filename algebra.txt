@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EST II Math: In-Depth Guide to Algebra and Functions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1f2937;
+        }
+        .topic-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #9333ea; /* Fuchsia 600 */
+            border-bottom: 3px solid #f3e8ff; /* Fuchsia 100 */
+            padding-bottom: 0.75rem;
+        }
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #a855f7; /* Fuchsia 500 */
+        }
+        .tertiary-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        .formula-box {
+            background-color: #f5f3ff; /* Violet 50 */
+            border-left: 4px solid #8b5cf6; /* Violet 500 */
+            padding: 1.25rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.375rem;
+            font-size: 1.1rem;
+            color: #5b21b6; /* Violet 800 */
+            line-height: 1.7;
+        }
+        .example-box {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+        }
+        .example-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .example-step {
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            border-left: 2px solid #d1d5db;
+        }
+        .example-answer {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            color: #166534;
+        }
+        p {
+            line-height: 1.65;
+        }
+        #unitCircleCanvas {
+            display: block;
+            margin: 1.5rem auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            background-color: #f9fafb;
+        }
+        figcaption {
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin-top: 0.75rem;
+        }
+        #table-of-contents a {
+            transition: color 0.2s;
+        }
+        #table-of-contents ul a {
+            font-weight: 500;
+        }
+        .diagram-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-purple-700">Algebra and Functions</h1>
+            <p class="mt-4 text-lg text-gray-600">
+                The most heavily weighted domain (32-42%) on the EST II Math Level 1 exam. This section covers algebraic manipulation, solving equations, and understanding the properties of various functions.
+            </p>
+        </header>
+
+        <main>
+
+            <nav class="topic-card" id="table-of-contents">
+                <h2 class="section-title">Table of Contents</h2>
+                <ol class="list-decimal list-inside space-y-4 text-lg">
+                    <li>
+                        <a href="#algebraic-expressions" class="font-semibold text-purple-600 hover:underline">Algebraic Expressions</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                            <li><a href="#simplifying-polynomials" class="text-gray-700 hover:text-purple-600">Simplifying Polynomials and Exponents</a></li>
+                            <li><a href="#factoring-polynomials" class="text-gray-700 hover:text-purple-600">Factoring Polynomials</a></li>
+                            <li><a href="#rational-radical" class="text-gray-700 hover:text-purple-600">Rational and Radical Expressions</a></li>
+                            <li><a href="#remainder-factor-theorems" class="text-gray-700 hover:text-purple-600">Polynomial Remainder and Factor Theorems</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#solving-equations" class="font-semibold text-purple-600 hover:underline">Solving Equations and Inequalities</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                            <li><a href="#quadratic-equations" class="text-gray-700 hover:text-purple-600">Quadratic Equations</a></li>
+                            <li><a href="#solving-inequalities" class="text-gray-700 hover:text-purple-600">Solving Inequalities</a></li>
+                            <li><a href="#log-exp-equations" class="text-gray-700 hover:text-purple-600">Logarithmic and Exponential Equations</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#systems-of-equations" class="font-semibold text-purple-600 hover:underline">Systems of Equations and Inequalities</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                            <li><a href="#linear-systems" class="text-gray-700 hover:text-purple-600">Systems of Linear Equations</a></li>
+                            <li><a href="#linear-quadratic-systems" class="text-gray-700 hover:text-purple-600">Systems with Linear and Quadratic Equations</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#functions" class="font-semibold text-purple-600 hover:underline">Functions</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                            <li><a href="#function-notation" class="text-gray-700 hover:text-purple-600">Function Notation and Properties</a></li>
+                            <li><a href="#function-families" class="text-gray-700 hover:text-purple-600">Function Families and Their Graphs</a></li>
+                            <li><a href="#piecewise-functions" class="text-gray-700 hover:text-purple-600">Piecewise-Defined Functions</a></li>
+                            <li><a href="#function-transformations" class="text-gray-700 hover:text-purple-600">Function Transformations</a></li>
+                            <li><a href="#inverse-functions" class="text-gray-700 hover:text-purple-600">Inverse Functions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#trigonometric-functions" class="font-semibold text-purple-600 hover:underline">Trigonometric Functions</a></li>
+                </ol>
+            </nav>
+
+            <section id="algebraic-expressions" class="topic-card">
+                <h2 class="section-title">1. Algebraic Expressions</h2>
+                <p class="mb-4">
+                    This foundational part of algebra deals with manipulating expressions that contain variables, constants, and operational symbols. Mastery of these techniques is essential for solving equations and working with functions.
+                </p>
+
+                <h3 id="simplifying-polynomials" class="subsection-title">Simplifying Polynomials and Exponents</h3>
+                <p class="mb-4">
+                    Simplifying polynomials involves combining like terms (terms with the same variables raised to the same powers) and applying the rules of exponents.
+                </p>
+                <div class="formula-box">
+                    <strong>Exponent Rules:</strong><br>
+                    \(x^a \cdot x^b = x^{a+b}\)<br>
+                    \((x^a)^b = x^{ab}\)<br>
+                    \(\frac{x^a}{x^b} = x^{a-b}\)<br>
+                    \(x^0 = 1\) (for \(x \neq 0\))<br>
+                    \(x^{-a} = \frac{1}{x^a}\)<br>
+                    \(x^{a/b} = \sqrt[b]{x^a}\)
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1: Simplify \( (3x^2y - 2xy^2 + 5) - (xy^2 - 2x^2y + 3) \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Distribute the negative sign:
+                    \[3x^2y - 2xy^2 + 5 - xy^2 + 2x^2y - 3\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Group like terms:
+                    \[(3x^2y + 2x^2y) + (-2xy^2 - xy^2) + (5 - 3)\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Combine like terms:
+                    \[5x^2y - 3xy^2 + 2\]</div>
+                    <div class="example-answer">The simplified expression is \(5x^2y - 3xy^2 + 2\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2: Simplify \( \frac{(2x^3y^2)^3}{4x^4y^8} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Apply the power rule to the numerator.
+                    \[ (2x^3y^2)^3 = 2^3 \cdot (x^3)^3 \cdot (y^2)^3 = 8x^9y^6 \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rewrite the fraction with the simplified numerator.
+                    \[ \frac{8x^9y^6}{4x^4y^8} \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Simplify the coefficients and use the quotient rule for exponents on the variables.
+                    \[ \frac{8}{4} \cdot x^{9-4} \cdot y^{6-8} = 2x^5y^{-2} \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Write the expression with positive exponents.
+                    \[ \frac{2x^5}{y^2} \]</div>
+                    <div class="example-answer">The simplified expression is \(\frac{2x^5}{y^2}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3: Find the product of \( (x-2y)^2 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Recognize this as a perfect square trinomial pattern \((a-b)^2 = a^2 - 2ab + b^2\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Identify \(a=x\) and \(b=2y\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Substitute into the pattern.
+                    \[ (x)^2 - 2(x)(2y) + (2y)^2 \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Simplify each term.
+                    \[ x^2 - 4xy + 4y^2 \]</div>
+                    <div class="example-answer">The product is \(x^2 - 4xy + 4y^2\).</div>
+                </div>
+                
+                <h3 id="factoring-polynomials" class="subsection-title">Factoring Polynomials</h3>
+                <p class="mb-4">
+                    Factoring is the process of breaking down a polynomial into a product of simpler polynomials. This is a critical skill for solving equations and analyzing functions.
+                </p>
+                <div class="formula-box">
+                    <strong>Common Factoring Patterns:</strong><br>
+                    Difference of Squares: \(a^2 - b^2 = (a-b)(a+b)\)<br>
+                    Perfect Square Trinomial: \(a^2 \pm 2ab + b^2 = (a \pm b)^2\)<br>
+                    Sum/Difference of Cubes: \(a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)\)
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Factoring by Grouping): Factor \( 3x^3 + 6x^2 - 2x - 4 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Group the first two terms and the last two terms.
+                    \[(3x^3 + 6x^2) + (-2x - 4)\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Factor out the GCF from each group.
+                    \[3x^2(x + 2) - 2(x + 2)\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Notice the common binomial factor \((x+2)\). Factor it out.
+                    \[(x + 2)(3x^2 - 2)\]</div>
+                    <div class="example-answer">The factored form is \((x + 2)(3x^2 - 2)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Trinomial with a > 1): Factor \( 2x^2 + 7x + 3 \).</p>
+                    <div class="example-step"><strong>Step 1 (AC Method):</strong> Find two numbers that multiply to \(a \cdot c = 2 \cdot 3 = 6\) and add to \(b = 7\). The numbers are 6 and 1.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rewrite the middle term using these numbers:
+                    \[2x^2 + 6x + 1x + 3\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor by grouping:
+                    \[(2x^2 + 6x) + (x + 3)\]
+                    \[2x(x + 3) + 1(x + 3)\]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Factor out the common binomial:
+                    \[(x + 3)(2x + 1)\]</div>
+                    <div class="example-answer">The factored form is \((x + 3)(2x + 1)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Sum of Cubes): Factor \( 8x^3 + 27 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Recognize this as a Sum of Cubes, \(a^3 + b^3\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Identify \(a\) and \(b\).
+                    <br>\(a^3 = 8x^3 \implies a = 2x\)
+                    <br>\(b^3 = 27 \implies b = 3\)</div>
+                    <div class="example-step"><strong>Step 3:</strong> Apply the formula \((a+b)(a^2 - ab + b^2)\).
+                    \[(2x + 3)((2x)^2 - (2x)(3) + (3)^2)\]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Simplify the second factor.
+                    \[(2x + 3)(4x^2 - 6x + 9)\]</div>
+                    <div class="example-answer">The factored form is \((2x + 3)(4x^2 - 6x + 9)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Factoring out GCF first): Factor \( 4x^3 - 100x \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Always look for a Greatest Common Factor (GCF) first. The GCF of \(4x^3\) and \(100x\) is \(4x\).
+                    \[4x(x^2 - 25)\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Look at the remaining factor \((x^2 - 25)\). This is a Difference of Squares.</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor the Difference of Squares.
+                    \[x^2 - 25 = (x-5)(x+5)\]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Combine all the factors.
+                    \[4x(x-5)(x+5)\]</div>
+                    <div class="example-answer">The completely factored form is \(4x(x-5)(x+5)\).</div>
+                </div>
+
+                <h3 id="rational-radical" class="subsection-title">Rational and Radical Expressions</h3>
+                <p class="mb-4">
+                    These involve fractions with polynomials (rational) or expressions with roots (radical). Simplifying them often requires factoring and applying exponent rules.
+                </p>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Rational): Simplify \( \frac{x^2 - 4}{x^2 + x - 6} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Factor the numerator and the denominator.
+                    <br>Numerator (Difference of Squares): \(x^2 - 4 = (x-2)(x+2)\)
+                    <br>Denominator (Trinomial): \(x^2 + x - 6 = (x+3)(x-2)\)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rewrite the fraction with the factored forms:
+                    \[ \frac{(x-2)(x+2)}{(x+3)(x-2)} \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Cancel the common factor \((x-2)\), noting that \(x \neq 2\).
+                    \[ \frac{x+2}{x+3} \]</div>
+                    <div class="example-answer">The simplified expression is \(\frac{x+2}{x+3}\), for \(x \neq 2, x \neq -3\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Radical): Simplify \( \sqrt{72x^5y^6} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Find the prime factorization of the number: \(72 = 36 \cdot 2 = 6^2 \cdot 2\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Break down the variables into the largest even powers possible.
+                    <br>\(x^5 = x^4 \cdot x\)
+                    <br>\(y^6\) is already an even power.</div>
+                    <div class="example-step"><strong>Step 3:</strong> Rewrite the radical:
+                    \[ \sqrt{36 \cdot 2 \cdot x^4 \cdot x \cdot y^6} = \sqrt{36x^4y^6 \cdot 2x} \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Take the square root of the perfect square parts.
+                    \[ \sqrt{36x^4y^6} \cdot \sqrt{2x} = 6x^2y^3\sqrt{2x} \]</div>
+                    <div class="example-answer">The simplified expression is \(6x^2y^3\sqrt{2x}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Adding Rational Expressions): Simplify \( \frac{3}{x+1} + \frac{2}{x-2} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Find a common denominator, which is the product of the two denominators: \((x+1)(x-2)\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rewrite each fraction with the common denominator.
+                    \[ \frac{3(x-2)}{(x+1)(x-2)} + \frac{2(x+1)}{(x+1)(x-2)} \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Combine the numerators over the common denominator.
+                    \[ \frac{3(x-2) + 2(x+1)}{(x+1)(x-2)} = \frac{3x-6 + 2x+2}{(x+1)(x-2)} \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Simplify the numerator.
+                    \[ \frac{5x-4}{(x+1)(x-2)} \]</div>
+                    <div class="example-answer">The simplified expression is \(\frac{5x-4}{(x+1)(x-2)}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Rationalizing the Denominator): Simplify \( \frac{4}{3-\sqrt{5}} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Multiply the numerator and denominator by the conjugate of the denominator. The conjugate of \(3-\sqrt{5}\) is \(3+\sqrt{5}\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Perform the multiplication.
+                    \[ \frac{4(3+\sqrt{5})}{(3-\sqrt{5})(3+\sqrt{5})} \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Simplify the numerator and denominator. The denominator is a difference of squares: \(3^2 - (\sqrt{5})^2 = 9 - 5 = 4\).
+                    \[ \frac{12+4\sqrt{5}}{4} \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Divide both terms in the numerator by the denominator.
+                    \[ \frac{12}{4} + \frac{4\sqrt{5}}{4} = 3 + \sqrt{5} \]</div>
+                    <div class="example-answer">The simplified expression is \(3 + \sqrt{5}\).</div>
+                </div>
+
+                <h3 id="remainder-factor-theorems" class="subsection-title">Polynomial Remainder and Factor Theorems</h3>
+                <p class="mb-4">
+                    These theorems provide a quick way to find the remainder of a polynomial division and to determine if a binomial is a factor of a polynomial, which is very useful for finding roots.
+                </p>
+                <div class="formula-box">
+                    <strong>Remainder Theorem:</strong> If a polynomial \(P(x)\) is divided by \(x-c\), the remainder is \(P(c)\).<br>
+                    <strong>Factor Theorem:</strong> \(x-c\) is a factor of a polynomial \(P(x)\) if and only if \(P(c) = 0\).
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Remainder Theorem): What is the remainder when \(P(x) = x^3 - 2x^2 + 5x - 7\) is divided by \(x-2\)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> According to the Remainder Theorem, the remainder is \(P(2)\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Substitute \(x=2\) into the polynomial.
+                    \[ P(2) = (2)^3 - 2(2)^2 + 5(2) - 7 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Evaluate the expression.
+                    \[ P(2) = 8 - 2(4) + 10 - 7 = 8 - 8 + 10 - 7 = 3 \]</div>
+                    <div class="example-answer">The remainder is 3.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Factor Theorem): Is \(x+3\) a factor of \(P(x) = x^3 + x^2 - 8x - 12\)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> According to the Factor Theorem, \(x+3\) (which is \(x-(-3)\)) is a factor if \(P(-3) = 0\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Substitute \(x=-3\) into the polynomial.
+                    \[ P(-3) = (-3)^3 + (-3)^2 - 8(-3) - 12 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Evaluate the expression.
+                    \[ P(-3) = -27 + 9 + 24 - 12 = -27 + 33 - 12 = 6 - 12 = -6 \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Since \(P(-3) = -6 \neq 0\), \(x+3\) is not a factor.</div>
+                    <div class="example-answer">No, \(x+3\) is not a factor of the polynomial.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Using Factor Theorem to find a constant): For what value of \(k\) is \(x-2\) a factor of \(P(x) = x^3 - kx^2 + 4x - 8\)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> If \(x-2\) is a factor, then according to the Factor Theorem, \(P(2)\) must be equal to 0.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Set up the equation \(P(2) = 0\).
+                    \[ (2)^3 - k(2)^2 + 4(2) - 8 = 0 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve for \(k\).
+                    <br>\( 8 - 4k + 8 - 8 = 0 \)
+                    <br>\( 8 - 4k = 0 \)
+                    <br>\( 8 = 4k \)
+                    <br>\( k = 2 \)</div>
+                    <div class="example-answer">The value of \(k\) must be 2.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Using Remainder Theorem to find a constant): When \(P(x) = 2x^3 + 3x^2 - kx + 5\) is divided by \(x+1\), the remainder is 10. What is the value of \(k\)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> The Remainder Theorem states that the remainder is \(P(-1)\). We are given that this remainder is 10.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Set up the equation \(P(-1) = 10\).
+                    \[ 2(-1)^3 + 3(-1)^2 - k(-1) + 5 = 10 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve for \(k\).
+                    <br>\( 2(-1) + 3(1) + k + 5 = 10 \)
+                    <br>\( -2 + 3 + k + 5 = 10 \)
+                    <br>\( 6 + k = 10 \)
+                    <br>\( k = 4 \)</div>
+                    <div class="example-answer">The value of \(k\) is 4.</div>
+                </div>
+            </section>
+
+            <section id="solving-equations" class="topic-card">
+                <h2 class="section-title">2. Solving Equations and Inequalities</h2>
+                <p class="mb-4">
+                    This section covers the methods for finding the values of variables that make equations or inequalities true.
+                </p>
+
+                <h3 id="quadratic-equations" class="subsection-title">Quadratic Equations</h3>
+                <p class="mb-4">
+                    Quadratic equations (\(ax^2 + bx + c = 0\)) can be solved by factoring, completing the square, or the quadratic formula.
+                </p>
+                <div class="formula-box">
+                    <strong>The Quadratic Formula:</strong>
+                    \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+                    The <strong>discriminant</strong>, \(D = b^2 - 4ac\), determines the nature of the roots.
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Completing the Square): Solve \( x^2 - 6x + 2 = 0 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Move the constant term to the other side: \(x^2 - 6x = -2\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Take half of the b-coefficient, square it, and add it to both sides.
+                    <br>Half of -6 is -3. \((-3)^2 = 9\).
+                    <br>\(x^2 - 6x + 9 = -2 + 9\)</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor the left side as a perfect square.
+                    \[ (x-3)^2 = 7 \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Take the square root of both sides.
+                    \[ x-3 = \pm\sqrt{7} \]</div>
+                    <div class="example-step"><strong>Step 5:</strong> Isolate x.
+                    \[ x = 3 \pm\sqrt{7} \]</div>
+                    <div class="example-answer">The solutions are \(x = 3 + \sqrt{7}\) and \(x = 3 - \sqrt{7}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Using the Discriminant): How many real solutions does the equation \( 3x^2 - 4x + 2 = 0 \) have?</p>
+                    <div class="example-step"><strong>Step 1:</strong> Identify a=3, b=-4, c=2.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Calculate the discriminant, \(D = b^2 - 4ac\).
+                    \[ D = (-4)^2 - 4(3)(2) = 16 - 24 = -8 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Interpret the result. Since the discriminant is negative (\(-8 < 0\)), the equation has no real solutions (it has two complex solutions).</div>
+                    <div class="example-answer">The equation has 0 real solutions.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Solving by Factoring): Solve \( 6x^2 + x = 2 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Set the equation to zero: \(6x^2 + x - 2 = 0\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Factor the trinomial. We need two numbers that multiply to \(6 \cdot -2 = -12\) and add to 1. The numbers are 4 and -3.
+                    <br>\(6x^2 + 4x - 3x - 2 = 0\)
+                    <br>\(2x(3x+2) - 1(3x+2) = 0\)
+                    <br>\((2x-1)(3x+2) = 0\)</div>
+                    <div class="example-step"><strong>Step 3:</strong> Set each factor to zero and solve.
+                    <br>\(2x-1 = 0 \implies 2x=1 \implies x=1/2\)
+                    <br>\(3x+2 = 0 \implies 3x=-2 \implies x=-2/3\)</div>
+                    <div class="example-answer">The solutions are \(x=1/2\) and \(x=-2/3\).</div>
+                </div>
+
+                <h3 id="solving-inequalities" class="subsection-title">Solving Inequalities</h3>
+                <p class="mb-4">
+                    Solving inequalities is similar to solving equations, with one key difference: when you multiply or divide both sides by a negative number, you must reverse the inequality sign.
+                </p>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Quadratic Inequality): Solve \( x^2 - x - 6 > 0 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Find the critical points by solving the related equation \(x^2 - x - 6 = 0\).
+                    <br>\((x-3)(x+2) = 0\). The critical points are \(x=3\) and \(x=-2\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> These points divide the number line into three intervals: \((-\infty, -2)\), \((-2, 3)\), and \((3, \infty)\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Test a point from each interval in the original inequality \( (x-3)(x+2) > 0 \).
+                    <br><strong>Test x=-3:</strong> \((-3-3)(-3+2) = (-6)(-1) = 6 > 0\). True.
+                    <br><strong>Test x=0:</strong> \((0-3)(0+2) = (-3)(2) = -6 > 0\). False.
+                    <br><strong>Test x=4:</strong> \((4-3)(4+2) = (1)(6) = 6 > 0\). True.</div>
+                    <div class="example-answer">The solution is the union of the true intervals: \(x < -2\) or \(x > 3\), which is \((-\infty, -2) \cup (3, \infty)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Absolute Value Inequality): Solve \( |3x + 2| \geq 5 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> For a "greater than" absolute value inequality, split it into two separate inequalities.
+                    <br><strong>Case 1:</strong> \( 3x + 2 \geq 5 \)
+                    <br><strong>Case 2:</strong> \( 3x + 2 \leq -5 \)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Solve Case 1.
+                    <br>\( 3x \geq 3 \implies x \geq 1 \)</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve Case 2.
+                    <br>\( 3x \leq -7 \implies x \leq -7/3 \)</div>
+                    <div class="example-answer">The solution is \(x \leq -7/3\) or \(x \geq 1\).</div>
+                </div>
+                 <div class="example-box">
+                    <p class="example-title">Example 3 (Compound Inequality): Solve \( -3 \leq 2x - 1 < 7 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Isolate the variable x in the middle by performing operations on all three parts of the inequality.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Add 1 to all three parts.
+                    \[ -3 + 1 \leq 2x - 1 + 1 < 7 + 1 \]
+                    \[ -2 \leq 2x < 8 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Divide all three parts by 2.
+                    \[ -1 \leq x < 4 \]</div>
+                    <div class="example-answer">The solution is \([-1, 4)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Rational Inequality): Solve \( \frac{x-1}{x+3} \leq 0 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Find the critical points where the numerator or denominator is zero.
+                    <br>Numerator: \(x-1=0 \implies x=1\)
+                    <br>Denominator: \(x+3=0 \implies x=-3\)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Test the intervals \((-\infty, -3)\), \((-3, 1)\), and \((1, \infty)\).
+                    <br><strong>Test x=-4:</strong> \((-5)/(-1) = 5 \leq 0\). False.
+                    <br><strong>Test x=0:</strong> \((-1)/(3) \leq 0\). True.
+                    <br><strong>Test x=2:</strong> \((1)/(5) \leq 0\). False.</div>
+                    <div class="example-step"><strong>Step 3:</strong> Check the critical points. At x=1, the expression is 0, which is \(\leq 0\), so include 1. At x=-3, the expression is undefined, so exclude -3.</div>
+                    <div class="example-answer">The solution is \(-3 < x \leq 1\), or \((-3, 1]\).</div>
+                </div>
+
+                <h3 id="log-exp-equations" class="subsection-title">Logarithmic and Exponential Equations</h3>
+                <div class="formula-box">
+                    <strong>Logarithm Properties:</strong><br>
+                    \(\log_b(xy) = \log_b(x) + \log_b(y)\)<br>
+                    \(\log_b(x/y) = \log_b(x) - \log_b(y)\)<br>
+                    \(\log_b(x^p) = p \cdot \log_b(x)\)<br>
+                    Change of Base: \(\log_b(x) = \frac{\log_c(x)}{\log_c(b)}\)
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1: Solve \( \log_3(x) + \log_3(x-2) = 1 \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Use the logarithm product rule to combine the logs.
+                    \[ \log_3(x(x-2)) = 1 \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Convert the logarithmic equation to its exponential form.
+                    \[ x(x-2) = 3^1 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve the resulting quadratic equation.
+                    <br>\( x^2 - 2x = 3 \implies x^2 - 2x - 3 = 0 \)
+                    <br>\( (x-3)(x+1) = 0 \). Potential solutions are \(x=3\) and \(x=-1\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> Check for extraneous solutions. The argument of a logarithm must be positive.
+                    <br><strong>Check x=3:</strong> \(\log_3(3)\) and \(\log_3(1)\) are valid.
+                    <br><strong>Check x=-1:</strong> \(\log_3(-1)\) is undefined.</div>
+                    <div class="example-answer">The only valid solution is \(x=3\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Exponential): Solve \( 4^{x+1} = 8^{x-1} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Rewrite both sides with a common base. The common base for 4 and 8 is 2.
+                    <br>\(4 = 2^2\) and \(8 = 2^3\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Substitute these into the equation.
+                    \[ (2^2)^{x+1} = (2^3)^{x-1} \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Use the power rule for exponents \((x^a)^b = x^{ab}\).
+                    \[ 2^{2(x+1)} = 2^{3(x-1)} \implies 2^{2x+2} = 2^{3x-3} \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Since the bases are equal, the exponents must be equal.
+                    \[ 2x+2 = 3x-3 \]</div>
+                    <div class="example-step"><strong>Step 5:</strong> Solve the linear equation.
+                    \[ 5 = x \]</div>
+                    <div class="example-answer">The solution is \(x=5\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Logarithmic): Solve \( 2\log_5(x) = \log_5(4) + \log_5(9) \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Use the power rule on the left and the product rule on the right.
+                    \[ \log_5(x^2) = \log_5(4 \cdot 9) = \log_5(36) \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Since the logs have the same base, their arguments must be equal.
+                    \[ x^2 = 36 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve for x.
+                    \[ x = \pm 6 \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> Check for extraneous solutions. The argument of the original log, x, must be positive. Therefore, x cannot be -6.</div>
+                    <div class="example-answer">The only valid solution is \(x=6\).</div>
+                </div>
+            </section>
+
+            <section id="systems-of-equations" class="topic-card">
+                <h2 class="section-title">3. Systems of Equations and Inequalities</h2>
+                <p class="mb-4">
+                    A system of equations is a set of two or more equations that share variables. Solving a system means finding the values for the variables that make all equations in the system true simultaneously. This often represents the point(s) of intersection between the graphs of the equations.
+                </p>
+
+                <h3 id="linear-systems" class="subsection-title">Systems of Linear Equations</h3>
+                <p class="mb-4">
+                    These systems can be solved using methods like substitution or elimination.
+                </p>
+                <div class="diagram-container">
+                    <figure>
+                        <canvas id="oneSolutionCanvas" width="250" height="200"></canvas>
+                        <figcaption>One Solution (Intersecting Lines)</figcaption>
+                    </figure>
+                    <figure>
+                        <canvas id="noSolutionCanvas" width="250" height="200"></canvas>
+                        <figcaption>No Solution (Parallel Lines)</figcaption>
+                    </figure>
+                    <figure>
+                        <canvas id="infiniteSolutionCanvas" width="250" height="200"></canvas>
+                        <figcaption>Infinite Solutions (Same Line)</figcaption>
+                    </figure>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Substitution Method): Solve the system:
+                    <br>1) \(y = 2x - 1\)
+                    <br>2) \(3x + 2y = 16\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Equation 1 is already solved for y. Substitute the expression for y from Equation 1 into Equation 2.
+                    \[3x + 2(2x - 1) = 16\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Solve the resulting equation for x.
+                    <br>\(3x + 4x - 2 = 16\)
+                    <br>\(7x = 18\)
+                    <br>\(x = 18/7\)</div>
+                    <div class="example-step"><strong>Step 3:</strong> Substitute the value of x back into Equation 1 to find y.
+                    \[y = 2(18/7) - 1 = 36/7 - 7/7 = 29/7\]</div>
+                    <div class="example-answer">The solution is \(x = 18/7, y = 29/7\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Elimination Method): Solve the system:
+                    <br>1) \(4x - 3y = 11\)
+                    <br>2) \(3x + 2y = 4\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Multiply one or both equations so that the coefficients of one variable are opposites. Let's eliminate y. Multiply Equation 1 by 2 and Equation 2 by 3.
+                    <br>New Eq 1: \(2(4x - 3y) = 2(11) \implies 8x - 6y = 22\)
+                    <br>New Eq 2: \(3(3x + 2y) = 3(4) \implies 9x + 6y = 12\)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Add the two new equations together. The y-terms will cancel out.
+                    \[(8x - 6y) + (9x + 6y) = 22 + 12\]
+                    \[17x = 34 \implies x = 2\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Substitute the value of x back into either original equation to find y. Let's use Equation 2.
+                    <br>\(3(2) + 2y = 4\)
+                    <br>\(6 + 2y = 4\)
+                    <br>\(2y = -2 \implies y = -1\)</div>
+                    <div class="example-answer">The solution is \(x=2, y=-1\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (No Solution / Inconsistent System): Solve the system:
+                    <br>1) \(2x - y = 4\)
+                    <br>2) \(6x - 3y = 6\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Use the elimination method. Multiply Equation 1 by -3 to make the x-coefficients opposites.
+                    <br>New Eq 1: \(-3(2x - y) = -3(4) \implies -6x + 3y = -12\)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Add the new Equation 1 to Equation 2.
+                    \[(-6x + 3y) + (6x - 3y) = -12 + 6\]
+                    \[0 = -6\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> The result \(0 = -6\) is a false statement. This contradiction means there is no pair of (x, y) that can satisfy both equations simultaneously.</div>
+                    <div class="example-answer">The system has no solution. The lines are parallel.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Infinite Solutions / Dependent System): Solve the system:
+                    <br>1) \(x + 2y = 3\)
+                    <br>2) \(2x + 4y = 6\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Use the elimination method. Multiply Equation 1 by -2.
+                    <br>New Eq 1: \(-2(x + 2y) = -2(3) \implies -2x - 4y = -6\)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Add the new Equation 1 to Equation 2.
+                    \[(-2x - 4y) + (2x + 4y) = -6 + 6\]
+                    \[0 = 0\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> The result \(0 = 0\) is a true statement. This means that the two equations are equivalent and represent the same line. Any point on the line is a solution.</div>
+                    <div class="example-answer">The system has infinitely many solutions.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 5 (Elimination Method): Solve the system:
+                    <br>1) \(5x + 2y = 8\)
+                    <br>2) \(3x + y = 5\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Multiply Equation 2 by -2 to eliminate the y-variable.
+                    <br>New Eq 2: \(-2(3x + y) = -2(5) \implies -6x - 2y = -10\)</div>
+                    <div class="example-step"><strong>Step 2:</strong> Add Equation 1 and the new Equation 2.
+                    \[(5x + 2y) + (-6x - 2y) = 8 - 10\]
+                    \[-x = -2 \implies x = 2\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Substitute \(x=2\) back into the original Equation 2 to find y.
+                    <br>\(3(2) + y = 5\)
+                    <br>\(6 + y = 5 \implies y = -1\)</div>
+                    <div class="example-answer">The solution is \((2, -1)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 6 (Substitution with Fractions): Solve the system:
+                    <br>1) \(x = \frac{1}{2}y + 3\)
+                    <br>2) \(4x - 3y = 10\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Substitute the expression for x from Equation 1 into Equation 2.
+                    \[4(\frac{1}{2}y + 3) - 3y = 10\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Distribute and solve for y.
+                    <br>\(2y + 12 - 3y = 10\)
+                    <br>\(-y + 12 = 10\)
+                    <br>\(-y = -2 \implies y = 2\)</div>
+                    <div class="example-step"><strong>Step 3:</strong> Substitute \(y=2\) back into Equation 1 to find x.
+                    \[x = \frac{1}{2}(2) + 3 = 1 + 3 = 4\]</div>
+                    <div class="example-answer">The solution is \((4, 2)\).</div>
+                </div>
+
+                <h3 id="linear-quadratic-systems" class="subsection-title">Systems with Linear and Quadratic Equations</h3>
+                <p class="mb-4">
+                    Typically solved using substitution, these systems can have zero, one, or two solutions, representing the points of intersection between a line and a parabola.
+                </p>
+                <div class="diagram-container">
+                    <figure>
+                        <canvas id="lqTwoSolutionsCanvas" width="250" height="200"></canvas>
+                        <figcaption>Two Solutions</figcaption>
+                    </figure>
+                    <figure>
+                        <canvas id="lqOneSolutionCanvas" width="250" height="200"></canvas>
+                        <figcaption>One Solution (Tangent)</figcaption>
+                    </figure>
+                    <figure>
+                        <canvas id="lqNoSolutionsCanvas" width="250" height="200"></canvas>
+                        <figcaption>No Real Solutions</figcaption>
+                    </figure>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1: Solve the system:
+                    <br>1) \(y = x^2 - 2x - 3\)
+                    <br>2) \(y = x - 3\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Since both equations are solved for y, we can set them equal to each other.
+                    \[x^2 - 2x - 3 = x - 3\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Move all terms to one side to form a quadratic equation.
+                    \[x^2 - 3x = 0\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve the quadratic equation by factoring.
+                    <br>\(x(x-3) = 0\)
+                    <br>This gives two possible solutions for x: \(x=0\) and \(x=3\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> Find the corresponding y-value for each x-value using the simpler linear equation (\(y=x-3\)).
+                    <br>If \(x=0\), then \(y = 0 - 3 = -3\). Solution: \((0, -3)\).
+                    <br>If \(x=3\), then \(y = 3 - 3 = 0\). Solution: \((3, 0)\).</div>
+                    <div class="example-answer">The solutions are the points \((0, -3)\) and \((3, 0)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (One Solution): Solve the system:
+                    <br>1) \(y = x^2 + 1\)
+                    <br>2) \(y = 2x\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Set the expressions for y equal to each other.
+                    \[x^2 + 1 = 2x\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rearrange into a standard quadratic form.
+                    \[x^2 - 2x + 1 = 0\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor the perfect square trinomial.
+                    <br>\((x-1)^2 = 0\)
+                    <br>This gives one solution for x: \(x=1\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> Substitute x=1 into the linear equation to find y.
+                    <br>\(y = 2(1) = 2\).</div>
+                    <div class="example-answer">The system has one solution at the point \((1, 2)\). This represents a line that is tangent to the parabola.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (No Real Solution): Solve the system:
+                    <br>1) \(y = x^2 + 4\)
+                    <br>2) \(y = x + 1\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Set the expressions for y equal to each other.
+                    \[x^2 + 4 = x + 1\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rearrange into a standard quadratic form.
+                    \[x^2 - x + 3 = 0\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Check the discriminant (\(D = b^2 - 4ac\)) to determine the nature of the solutions.
+                    <br>\(D = (-1)^2 - 4(1)(3) = 1 - 12 = -11\)</div>
+                    <div class="example-step"><strong>Step 4:</strong> Since the discriminant is negative, there are no real values of x that satisfy the equation.</div>
+                    <div class="example-answer">The system has no real solutions. This means the line and the parabola do not intersect.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Downward-Opening Parabola): Solve the system:
+                    <br>1) \(y = -x^2 + 4x + 1\)
+                    <br>2) \(y = -x + 5\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Set the expressions for y equal to each other.
+                    \[-x^2 + 4x + 1 = -x + 5\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Move all terms to one side to create a standard quadratic equation.
+                    \[0 = x^2 - 5x + 4\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor the quadratic equation.
+                    <br>\(0 = (x-4)(x-1)\)
+                    <br>This gives two solutions for x: \(x=1\) and \(x=4\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> Substitute each x-value back into the linear equation (\(y = -x + 5\)) to find the corresponding y-values.
+                    <br>If \(x=1\), then \(y = -1 + 5 = 4\). Solution: \((1, 4)\).
+                    <br>If \(x=4\), then \(y = -4 + 5 = 1\). Solution: \((4, 1)\).</div>
+                    <div class="example-answer">The solutions are the points \((1, 4)\) and \((4, 1)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 5 (Intersection with a Horizontal Line): Solve the system:
+                    <br>1) \(y = x^2 - 6x + 7\)
+                    <br>2) \(y = -2\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Substitute the value of y from the second equation into the first equation.
+                    \[-2 = x^2 - 6x + 7\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Set the quadratic equation to zero.
+                    \[0 = x^2 - 6x + 9\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor the perfect square trinomial.
+                    <br>\(0 = (x-3)^2\)
+                    <br>This gives a single solution for x: \(x=3\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> The y-value is already given as -2.</div>
+                    <div class="example-answer">The system has one solution at the point \((3, -2)\). This is the vertex of the parabola.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 6 (Sideways Parabola): Solve the system:
+                    <br>1) \(x = y^2\)
+                    <br>2) \(x = y + 2\)
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> Since both equations are solved for x, set them equal to each other.
+                    \[y^2 = y + 2\]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Rearrange into a standard quadratic form in terms of y.
+                    \[y^2 - y - 2 = 0\]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Factor the quadratic equation.
+                    <br>\((y-2)(y+1) = 0\)
+                    <br>This gives two solutions for y: \(y=2\) and \(y=-1\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> Substitute each y-value back into the linear equation (\(x = y + 2\)) to find the corresponding x-values.
+                    <br>If \(y=2\), then \(x = 2 + 2 = 4\). Solution: \((4, 2)\).
+                    <br>If \(y=-1\), then \(x = -1 + 2 = 1\). Solution: \((1, -1)\).</div>
+                    <div class="example-answer">The solutions are the points \((4, 2)\) and \((1, -1)\).</div>
+                </div>
+            </section>
+
+            <section id="functions" class="topic-card">
+                <h2 class="section-title">4. Functions</h2>
+                <p class="mb-4">
+                    A function is a rule that assigns each input value to exactly one output value. The EST requires a broad understanding of different function families, their properties, and their graphs.
+                </p>
+
+                <h3 id="function-notation" class="subsection-title">Function Notation and Properties</h3>
+                <p class="mb-4">
+                    Functions are typically denoted by \(f(x)\). Key properties include domain (the set of all possible input values) and range (the set of all possible output values).
+                </p>
+                <div class="example-box">
+                    <p class="example-title">Example 1: If \( f(x) = 3x^2 - 4x + 1 \), find \( f(-2) \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Substitute \(x=-2\) into the function definition.
+                    \[ f(-2) = 3(-2)^2 - 4(-2) + 1 \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Evaluate the expression, following the order of operations.
+                    \[ f(-2) = 3(4) - (-8) + 1 = 12 + 8 + 1 = 21 \]</div>
+                    <div class="example-answer">\(f(-2) = 21\).</div>
+                </div>
+                 <div class="example-box">
+                    <p class="example-title">Example 2 (Composition): If \( g(x) = x+3 \) and \( h(x) = x^2 \), find \( h(g(2)) \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Work from the inside out. First, find \(g(2)\).
+                    \[ g(2) = 2+3 = 5 \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Use the result of Step 1 as the input for the outer function, \(h(x)\).
+                    \[ h(g(2)) = h(5) = 5^2 = 25 \]</div>
+                    <div class="example-answer">\(h(g(2)) = 25\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3: If \( f(x) = 2x-5 \), for what value of x does \( f(x) = 11 \)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> Set the function expression equal to the given output value.
+                    \[ 2x-5 = 11 \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Solve the linear equation for x.
+                    <br>\( 2x = 16 \)
+                    <br>\( x = 8 \)</div>
+                    <div class="example-answer"> \(f(x) = 11\) when \(x=8\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Composition with variables): If \( f(x) = x-1 \) and \( g(x) = 3x \), find \( f(g(x)) \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> The notation \(f(g(x))\) means to substitute the entire expression for \(g(x)\) into the variable x in the function \(f(x)\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Replace x in \(f(x)\) with \(3x\).
+                    \[ f(g(x)) = (3x) - 1 \]</div>
+                    <div class="example-answer">\(f(g(x)) = 3x - 1\).</div>
+                </div>
+
+                <h3 id="function-families" class="subsection-title">Function Families and Their Graphs</h3>
+                <p class="mb-4">
+                    Recognizing the parent function and its properties is key to solving many problems on the exam.
+                </p>
+                <div class="formula-box">
+                    <strong>Key Function Types:</strong><br>
+                    <ul>
+                        <li><strong>Linear:</strong> \(f(x) = mx+b\). Graph is a straight line with slope \(m\) and y-intercept \(b\).</li>
+                        <li><strong>Quadratic:</strong> \(f(x) = ax^2+bx+c\). Graph is a parabola opening up (\(a>0\)) or down (\(a<0\)).</li>
+                        <li><strong>Exponential:</strong> \(f(x) = a \cdot b^x\). The variable x is in the exponent. The base 'b' determines the function's behavior: if \(b>1\), the graph shows exponential growth; if \(0&lt;b&lt;1\), it shows exponential decay. The graph always passes through the point (0, a), which is the y-intercept.</li>
+                        <li><strong>Logarithmic:</strong> \(f(x) = \log_b(x)\). Inverse of exponential. Domain is \(x>0\).</li>
+                        <li><strong>Absolute Value:</strong> \(f(x) = |x|\). Graph is V-shaped.</li>
+                        <li><strong>Rational:</strong> \(f(x) = P(x)/Q(x)\). Graph may have vertical asymptotes where the denominator is zero.</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 1 (Domain of a Radical Function): What is the domain of \( f(x) = \sqrt{2x - 10} \)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> The expression inside a square root cannot be negative. Therefore, it must be greater than or equal to zero.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Set up the inequality:
+                    \[ 2x - 10 \geq 0 \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve for x.
+                    \[ 2x \geq 10 \implies x \geq 5 \]</div>
+                    <div class="example-answer">The domain is \(x \geq 5\), or \([5, \infty)\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Range of a Quadratic Function): What is the range of the function \( f(x) = -x^2 + 4x - 1 \)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> The graph is a parabola opening downwards since \(a=-1 < 0\). The range will be from \(-\infty\) up to the maximum y-value, which occurs at the vertex.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Find the x-coordinate of the vertex: \(x = -b/(2a) = -4/(2(-1)) = 2\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Find the y-coordinate of the vertex by evaluating \(f(2)\).
+                    \[ f(2) = -(2)^2 + 4(2) - 1 = -4 + 8 - 1 = 3 \]</div>
+                    <div class="example-step"><strong>Step 4:</strong> The maximum value is 3. The range includes all y-values less than or equal to 3.</div>
+                    <div class="example-answer">The range is \(y \leq 3\), or \((-\infty, 3]\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Asymptotes of a Rational Function): Find the vertical asymptotes of \( f(x) = \frac{x-5}{x^2 - 4x} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Vertical asymptotes occur where the denominator is zero, provided the factor does not cancel with the numerator.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Factor the denominator: \(x^2 - 4x = x(x-4)\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Set the factors of the denominator to zero.
+                    <br>\( x = 0 \)
+                    <br>\( x-4 = 0 \implies x = 4 \)</div>
+                    <div class="example-step"><strong>Step 4:</strong> Neither of these factors cancel with the numerator \((x-5)\).</div>
+                    <div class="example-answer">The vertical asymptotes are at \(x=0\) and \(x=4\).</div>
+                </div>
+
+                <h3 id="piecewise-functions" class="subsection-title">Piecewise-Defined Functions</h3>
+                <p class="mb-4">
+                    A piecewise function is defined by multiple sub-functions, each of which applies to a different interval in the domain.
+                </p>
+                <div class="example-box">
+                    <p class="example-title">Example 1: Given the function 
+                    \[ f(x) = \begin{cases} 
+                    x^2 + 1 & \text{if } x < 1 \\
+                    3x - 1 & \text{if } x \geq 1 
+                    \end{cases} \]
+                    Find \(f(-2)\) and \(f(3)\).
+                    </p>
+                    <div class="example-step"><strong>To find f(-2):</strong>
+                    <br>Since \(-2 < 1\), we use the first rule: \(f(x) = x^2 + 1\).
+                    <br>\(f(-2) = (-2)^2 + 1 = 4 + 1 = 5\).
+                    </div>
+                    <div class="example-step"><strong>To find f(3):</strong>
+                    <br>Since \(3 \geq 1\), we use the second rule: \(f(x) = 3x - 1\).
+                    <br>\(f(3) = 3(3) - 1 = 9 - 1 = 8\).
+                    </div>
+                    <div class="example-answer">The values are \(f(-2) = 5\) and \(f(3) = 8\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2 (Graphing): How would you graph the function from the previous example?</p>
+                    <div class="example-step"><strong>Step 1:</strong> Graph the parabola \(y = x^2 + 1\) for all x-values to the left of \(x=1\). At \(x=1\), the point would be \((1, 2)\), which should be drawn as an open circle because the interval is \(x < 1\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> Graph the line \(y = 3x - 1\) for all x-values to the right of and including \(x=1\). At \(x=1\), the point is \((1, 2)\), which should be drawn as a closed circle because the interval is \(x \geq 1\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> The final graph consists of the left part of the parabola and the right part of the line. The open and closed circles at \(x=1\) overlap, creating a continuous graph.</div>
+                    <div class="example-answer">The graph is a combination of a parabolic curve and a line, connected at the point \((1, 2)\).</div>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-title">Example 3 (Absolute Value as a Piecewise Function): Write the function \(f(x) = |x-2|\) as a piecewise function.</p>
+                    <div class="example-step"><strong>Step 1:</strong> Recall the definition of absolute value: \(|A| = A\) if \(A \geq 0\), and \(|A| = -A\) if \(A < 0\).</div>
+                    <div class="example-step"><strong>Step 2:</strong> The "critical point" is where the expression inside the absolute value is zero. \(x-2=0 \implies x=2\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> For \(x \geq 2\), the expression \(x-2\) is non-negative, so \(f(x) = x-2\).</div>
+                    <div class="example-step"><strong>Step 4:</strong> For \(x < 2\), the expression \(x-2\) is negative, so \(f(x) = -(x-2) = -x+2\).</div>
+                    <div class="example-answer">The piecewise definition is 
+                    \[ f(x) = \begin{cases} 
+                    -x+2 & \text{if } x < 2 \\
+                    x-2 & \text{if } x \geq 2 
+                    \end{cases} \]</div>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Function with Three Pieces): Given 
+                    \[ g(x) = \begin{cases} 
+                    5 & \text{if } x \leq -2 \\
+                    x^2 & \text{if } -2 < x < 3 \\
+                    2x+1 & \text{if } x \geq 3 
+                    \end{cases} \]
+                    Find \(g(-5)\), \(g(0)\), and \(g(3)\).
+                    </p>
+                    <div class="example-step"><strong>To find g(-5):</strong> Since \(-5 \leq -2\), use the first rule. \(g(-5) = 5\).</div>
+                    <div class="example-step"><strong>To find g(0):</strong> Since \(-2 < 0 < 3\), use the second rule. \(g(0) = 0^2 = 0\).</div>
+                    <div class="example-step"><strong>To find g(3):</strong> Since \(3 \geq 3\), use the third rule. \(g(3) = 2(3)+1 = 7\).</div>
+                    <div class="example-answer">The values are \(g(-5)=5\), \(g(0)=0\), and \(g(3)=7\).</div>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-title">Example 5 (Solving an Equation with a Piecewise Function): For what value(s) of x does \(f(x) = 3\), given
+                    \[ f(x) = \begin{cases} 
+                    2x + 8 & \text{if } x < -2 \\
+                    x^2 - 1 & \text{if } x \geq -2 
+                    \end{cases} \]
+                    </p>
+                    <div class="example-step"><strong>Step 1:</strong> We need to check both pieces of the function to see where the output can be 3.</div>
+                    <div class="example-step"><strong>Step 2 (Check the first piece):</strong> Set \(2x+8 = 3\) and solve for x.
+                    <br>\(2x = -5 \implies x = -2.5\).
+                    <br>Now, check if this x-value is in the domain for this piece (\(x < -2\)). Since \(-2.5 < -2\), this is a valid solution.</div>
+                    <div class="example-step"><strong>Step 3 (Check the second piece):</strong> Set \(x^2-1 = 3\) and solve for x.
+                    <br>\(x^2 = 4 \implies x = \pm 2\).
+                    <br>Now, check if these x-values are in the domain for this piece (\(x \geq -2\)). Both \(x=2\) and \(x=-2\) satisfy this condition.</div>
+                    <div class="example-answer">The values of x for which \(f(x)=3\) are \(-2.5, -2, \text{ and } 2\).</div>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-title">Example 6 (Real-World Application): A parking garage charges $5 for the first hour and $2 for each additional hour or fraction thereof. Write a piecewise function for the cost C(h) for parking for h hours, for \(0 < h \leq 4\).</p>
+                    <div class="example-step"><strong>Step 1 (First hour):</strong> For \(0 < h \leq 1\), the cost is a flat $5.</div>
+                    <div class="example-step"><strong>Step 2 (Second hour):</strong> For \(1 < h \leq 2\), the cost is the initial $5 plus $2 for the second hour, totaling $7.</div>
+                    <div class="example-step"><strong>Step 3 (Third hour):</strong> For \(2 < h \leq 3\), the cost is $7 + $2 = $9.</div>
+                    <div class="example-step"><strong>Step 4 (Fourth hour):</strong> For \(3 < h \leq 4\), the cost is $9 + $2 = $11.</div>
+                    <div class="example-answer">The function is 
+                    \[ C(h) = \begin{cases} 
+                    5 & \text{if } 0 < h \leq 1 \\
+                    7 & \text{if } 1 < h \leq 2 \\
+                    9 & \text{if } 2 < h \leq 3 \\
+                    11 & \text{if } 3 < h \leq 4
+                    \end{cases} \]</div>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-title">Example 7 (Domain and Range): What are the domain and range of the function
+                    \[ f(x) = \begin{cases} 
+                    -x - 2 & \text{if } x \leq 0 \\
+                    \sqrt{x} & \text{if } x > 0 
+                    \end{cases} \]
+                    </p>
+                    <div class="example-step"><strong>Domain:</strong> The function's rules cover all real numbers. The first rule covers all \(x \leq 0\) and the second rule covers all \(x > 0\). Therefore, the domain is all real numbers.</div>
+                    <div class="example-step"><strong>Range:</strong> Consider the output of each piece.
+                    <br>For \(x \leq 0\), the piece is a line \(-x-2\). At \(x=0\), the value is -2. As x becomes more negative (e.g., -10), \(-x-2\) becomes more positive (e.g., 8). So this piece covers all y-values from -2 upwards. Range of this piece: \([-2, \infty)\).
+                    <br>For \(x > 0\), the piece is \(\sqrt{x}\). The output is always positive. As x approaches 0, \(\sqrt{x}\) approaches 0. Range of this piece: \((0, \infty)\).
+                    </div>
+                    <div class="example-step"><strong>Total Range:</strong> The total range is the union of the ranges of the pieces: \([-2, \infty) \cup (0, \infty)\), which simplifies to \([-2, \infty)\).</div>
+                    <div class="example-answer">Domain: \((-\infty, \infty)\). Range: \([-2, \infty)\).</div>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-title">Example 8 (Composition): Given the function
+                    \[ f(x) = \begin{cases} 
+                    3x & \text{if } x < 0 \\
+                    x+1 & \text{if } x \geq 0 
+                    \end{cases} \]
+                    Find the value of \(f(f(-1))\).
+                    </p>
+                    <div class="example-step"><strong>Step 1 (Inner function):</strong> First, evaluate \(f(-1)\). Since \(-1 < 0\), we use the first rule.
+                    \[ f(-1) = 3(-1) = -3 \]</div>
+                    <div class="example-step"><strong>Step 2 (Outer function):</strong> Now, use the result from Step 1 as the input for the outer function. We need to find \(f(-3)\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Since \(-3 < 0\), we use the first rule again.
+                    \[ f(-3) = 3(-3) = -9 \]</div>
+                    <div class="example-answer">The value of \(f(f(-1))\) is -9.</div>
+                </div>
+
+                <h3 id="function-transformations" class="subsection-title">Function Transformations</h3>
+                <p class="mb-4">
+                    Transformations alter the graph of a parent function \(f(x)\) in predictable ways.
+                </p>
+                <div class="formula-box">
+                    For a function \(g(x) = a \cdot f(b(x-c)) + d\):
+                    <ul>
+                        <li><strong>\(d\):</strong> Vertical shift (up if \(d>0\), down if \(d<0\))</li>
+                        <li><strong>\(c\):</strong> Horizontal shift (right if \(c>0\), left if \(c<0\))</li>
+                        <li><strong>\(a\):</strong> Vertical stretch/compression. Reflection over x-axis if \(a<0\).</li>
+                        <li><strong>\(b\):</strong> Horizontal stretch/compression. Reflection over y-axis if \(b<0\).</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <figure class="mb-6">
+                        <canvas id="transformationCanvas" width="400" height="300"></canvas>
+                        <figcaption>Transformations of f(x) = x^2</figcaption>
+                    </figure>
+                    <p class="example-title">Example 1: Describe the transformations that map the graph of \(f(x) = x^2\) to the graph of \(g(x) = -2(x+3)^2 + 4\).</p>
+                    <div class="example-step"><strong>Step 1 (Horizontal Shift):</strong> The \((x+3)\) term indicates a horizontal shift. Since it's \(x-c\), we have \(c=-3\). This is a shift <strong>3 units to the left</strong>.</div>
+                    <div class="example-step"><strong>Step 2 (Vertical Stretch/Reflection):</strong> The \(a=-2\) term indicates two things. The negative sign means a <strong>reflection over the x-axis</strong>. The 2 means a <strong>vertical stretch by a factor of 2</strong>.</div>
+                    <div class="example-step"><strong>Step 3 (Vertical Shift):</strong> The \(d=4\) term indicates a vertical shift <strong>4 units up</strong>.</div>
+                    <div class="example-answer">The transformations are: shift left 3 units, reflect over the x-axis, vertically stretch by a factor of 2, and shift up 4 units.</div>
+                </div>
+                 <div class="example-box">
+                    <p class="example-title">Example 2: The graph of \(f(x) = \sqrt{x}\) is shifted 2 units right and 5 units down. What is the equation of the new function, \(g(x)\)?</p>
+                    <div class="example-step"><strong>Step 1 (Horizontal Shift):</strong> A shift 2 units right corresponds to \(c=2\). This changes \(x\) to \((x-2)\).</div>
+                    <div class="example-step"><strong>Step 2 (Vertical Shift):</strong> A shift 5 units down corresponds to \(d=-5\). This adds -5 to the end of the function.</div>
+                    <div class="example-step"><strong>Step 3:</strong> Apply these transformations to the parent function \(f(x) = \sqrt{x}\).
+                    \[ g(x) = \sqrt{x-2} - 5 \]</div>
+                    <div class="example-answer">The new equation is \(g(x) = \sqrt{x-2} - 5\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3: If the point \((2, 8)\) is on the graph of \(y=f(x)\), what point must be on the graph of \(y = f(x+1) - 3\)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> Analyze the transformations. \(x+1\) means a horizontal shift 1 unit to the left. \(-3\) means a vertical shift 3 units down.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Apply the horizontal shift to the x-coordinate: \(2 - 1 = 1\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Apply the vertical shift to the y-coordinate: \(8 - 3 = 5\).</div>
+                    <div class="example-answer">The new point must be \((1, 5)\).</div>
+                </div>
+
+                <h3 id="inverse-functions" class="subsection-title">Inverse Functions</h3>
+                <p class="mb-4">
+                    An inverse function, denoted \(f^{-1}(x)\), "reverses" the action of the original function \(f(x)\). If \(f(a)=b\), then \(f^{-1}(b)=a\). The graph of an inverse function is a reflection of the original function's graph over the line \(y=x\).
+                </p>
+                <div class="example-box">
+                    <p class="example-title">Example 1: Find the inverse of the function \( f(x) = \frac{2x+1}{x-3} \).</p>
+                    <div class="example-step"><strong>Step 1:</strong> Replace \(f(x)\) with y.
+                    \[ y = \frac{2x+1}{x-3} \]</div>
+                    <div class="example-step"><strong>Step 2:</strong> Swap x and y.
+                    \[ x = \frac{2y+1}{y-3} \]</div>
+                    <div class="example-step"><strong>Step 3:</strong> Solve for the new y.
+                    <br>\( x(y-3) = 2y+1 \)
+                    <br>\( xy - 3x = 2y+1 \)
+                    <br>\( xy - 2y = 3x+1 \)
+                    <br>\( y(x-2) = 3x+1 \)
+                    <br>\( y = \frac{3x+1}{x-2} \)</div>
+                    <div class="example-answer">The inverse function is \(f^{-1}(x) = \frac{3x+1}{x-2}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2: If \( f(x) = \sqrt[3]{x-5} \), find \( f^{-1}(2) \).</p>
+                    <div class="example-step"><strong>Method 1 (Find inverse first):</strong>
+                    <br>1. \(y = \sqrt[3]{x-5}\)
+                    <br>2. \(x = \sqrt[3]{y-5}\)
+                    <br>3. \(x^3 = y-5 \implies y = x^3 + 5\). So, \(f^{-1}(x) = x^3+5\).
+                    <br>4. \(f^{-1}(2) = (2)^3 + 5 = 8+5=13\).</div>
+                    <div class="example-step"><strong>Method 2 (Use inverse property):</strong>
+                    <br>Finding \(f^{-1}(2)\) is the same as finding the x that makes \(f(x)=2\).
+                    <br>Set \(f(x)=2\): \(\sqrt[3]{x-5} = 2\).
+                    <br>Cube both sides: \(x-5 = 2^3 = 8\).
+                    <br>Solve for x: \(x=13\).</div>
+                    <div class="example-answer">The value of \(f^{-1}(2)\) is 13.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3: The domain of \(f(x)\) is \([0, \infty)\) and its range is \([-2, \infty)\). What is the domain of \(f^{-1}(x)\)?</p>
+                    <div class="example-step"><strong>Step 1:</strong> The domain of an inverse function is the range of the original function.</div>
+                    <div class="example-step"><strong>Step 2:</strong> The range of \(f(x)\) is given as \([-2, \infty)\).</div>
+                    <div class="example-answer">The domain of \(f^{-1}(x)\) is \([-2, \infty)\).</div>
+                </div>
+            </section>
+
+            <section id="trigonometric-functions" class="topic-card">
+                <h2 class="section-title">5. Trigonometric Functions</h2>
+                <p class="mb-4">
+                    Trigonometric functions relate the angles of a triangle to the lengths of its sides. On the EST, they are often defined using the unit circle.
+                </p>
+
+                <h3 class="subsection-title">The Unit Circle</h3>
+                <p class="mb-4">
+                    The unit circle is a circle with a radius of 1 centered at the origin. For any angle \(\theta\), the point \((x, y)\) where the angle's terminal side intersects the circle gives the values for cosine and sine.
+                </p>
+                <canvas id="unitCircleCanvas" width="300" height="300"></canvas>
+                <div class="formula-box">
+                    <strong>Unit Circle Definitions:</strong><br>
+                    \(\cos(\theta) = x\)<br>
+                    \(\sin(\theta) = y\)<br>
+                    \(\tan(\theta) = \frac{y}{x}\)
+                </div>
+
+                <div class="example-box">
+                    <figure>
+                        <canvas id="unitCircleExampleCanvas" width="300" height="300"></canvas>
+                        <figcaption>Diagram 1</figcaption>
+                    </figure>
+                    <p class="example-title">Example 1: Based on Diagram 1, find the values of \(\sin(\pi/4)\), \(\cos(\pi/4)\), and \(\tan(\pi/4)\).</p>
+                    <div class="example-step"><strong>Step 1:</strong> The angle \(\pi/4\) radians (or 45°) corresponds to the point \((\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})\) on the unit circle.</div>
+                    <div class="example-step"><strong>Step 2:</strong> Identify the x and y coordinates. Here, \(x = \frac{\sqrt{2}}{2}\) and \(y = \frac{\sqrt{2}}{2}\).</div>
+                    <div class="example-step"><strong>Step 3:</strong> Apply the unit circle definitions.
+                    <br>\(\cos(\pi/4) = x = \frac{\sqrt{2}}{2}\)
+                    <br>\(\sin(\pi/4) = y = \frac{\sqrt{2}}{2}\)
+                    <br>\(\tan(\pi/4) = \frac{y}{x} = \frac{\sqrt{2}/2}{\sqrt{2}/2} = 1\)</div>
+                    <div class="example-answer">The values are \(\cos(\pi/4) = \frac{\sqrt{2}}{2}\), \(\sin(\pi/4) = \frac{\sqrt{2}}{2}\), and \(\tan(\pi/4) = 1\).</div>
+                </div>
+
+                <h3 class="subsection-title">Graphs of Trigonometric Functions</h3>
+                <p class="mb-4">
+                    The graphs of sine and cosine functions are periodic waves. Understanding their key properties, such as amplitude and period, is crucial for analyzing them.
+                </p>
+                <div class="formula-box">
+                    For functions \(y = A\sin(Bx+C) + D\) and \(y = A\cos(Bx+C) + D\):<br>
+                    <strong>Amplitude:</strong> \(|A|\).<br>
+                    <strong>Period:</strong> \(\frac{2\pi}{|B|}\).<br>
+                    <strong>Phase Shift (Horizontal):</strong> \(-\frac{C}{B}\). (Shift right if positive, left if negative)<br>
+                    <strong>Vertical Shift:</strong> \(D\). (Shift up if positive, down if negative)
+                </div>
+
+                <figure>
+                    <canvas id="sineGraphCanvas" width="500" height="250"></canvas>
+                    <figcaption>Graph of y = A sin(Bx) showing Amplitude and Period</figcaption>
+                </figure>
+
+                <div class="example-box">
+                    <p class="example-title">Example 2: What are the amplitude and period of the function \(f(x) = 3\sin(2x)\)?</p>
+                    <div class="example-step"><strong>Step 1 (Identify A and B):</strong> In the form \(y = A\sin(Bx)\), we have \(A=3\) and \(B=2\).</div>
+                    <div class="example-step"><strong>Step 2 (Calculate Amplitude):</strong> The amplitude is \(|A| = |3| = 3\).</div>
+                    <div class="example-step"><strong>Step 3 (Calculate Period):</strong> The period is \(\frac{2\pi}{|B|} = \frac{2\pi}{2} = \pi\).</div>
+                    <div class="example-answer">The amplitude is 3 and the period is \(\pi\). This means the graph oscillates between 3 and -3, and completes one full cycle every \(\pi\) units.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3: What are the amplitude and period of the function \(g(x) = -2\cos(\frac{\pi}{2}x)\)?</p>
+                    <div class="example-step"><strong>Step 1 (Identify A and B):</strong> In the form \(y = A\cos(Bx)\), we have \(A=-2\) and \(B=\frac{\pi}{2}\).</div>
+                    <div class="example-step"><strong>Step 2 (Calculate Amplitude):</strong> The amplitude is \(|A| = |-2| = 2\). The negative sign indicates a reflection over the x-axis.</div>
+                    <div class="example-step"><strong>Step 3 (Calculate Period):</strong> The period is \(\frac{2\pi}{|B|} = \frac{2\pi}{\pi/2} = 2\pi \cdot \frac{2}{\pi} = 4\).</div>
+                    <div class="example-answer">The amplitude is 2 and the period is 4.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Phase Shift): Find the amplitude, period, and phase shift for \(y = 2\sin(x - \frac{\pi}{2})\).</p>
+                    <div class="example-step"><strong>Step 1 (Identify A, B, C):</strong> In the form \(y = A\sin(Bx+C)\), we have \(A=2\), \(B=1\), and \(C=-\frac{\pi}{2}\).</div>
+                    <div class="example-step"><strong>Step 2 (Amplitude and Period):</strong>
+                    <br>Amplitude = \(|A| = 2\).
+                    <br>Period = \(\frac{2\pi}{|B|} = \frac{2\pi}{1} = 2\pi\).</div>
+                    <div class="example-step"><strong>Step 3 (Phase Shift):</strong> The phase shift is \(-\frac{C}{B} = -(\frac{-\pi/2}{1}) = \frac{\pi}{2}\).</div>
+                    <div class="example-answer">The function has an amplitude of 2, a period of \(2\pi\), and a phase shift of \(\frac{\pi}{2}\) units to the right.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 5 (Phase Shift): Find the amplitude, period, and phase shift for \(y = \sin(2x + \pi)\).</p>
+                    <div class="example-step"><strong>Step 1 (Identify A, B, C):</strong> In the form \(y = A\sin(Bx+C)\), we have \(A=1\), \(B=2\), and \(C=\pi\).</div>
+                    <div class="example-step"><strong>Step 2 (Amplitude and Period):</strong>
+                    <br>Amplitude = \(|A| = 1\).
+                    <br>Period = \(\frac{2\pi}{|B|} = \frac{2\pi}{2} = \pi\).</div>
+                    <div class="example-step"><strong>Step 3 (Phase Shift):</strong> The phase shift is \(-\frac{C}{B} = -\frac{\pi}{2}\).</div>
+                    <div class="example-answer">The function has an amplitude of 1, a period of \(\pi\), and a phase shift of \(\frac{\pi}{2}\) units to the left.</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 6 (All Transformations): Analyze the function \(y = 4\cos(\pi x - \frac{\pi}{2}) + 1\).</p>
+                    <div class="example-step"><strong>Step 1 (Identify A, B, C, D):</strong> In the form \(y = A\cos(Bx+C)+D\), we have \(A=4\), \(B=\pi\), \(C=-\frac{\pi}{2}\), and \(D=1\).</div>
+                    <div class="example-step"><strong>Step 2 (Amplitude):</strong> Amplitude = \(|A| = 4\). The graph oscillates between \(1-4=-3\) and \(1+4=5\).</div>
+                    <div class="example-step"><strong>Step 3 (Period):</strong> Period = \(\frac{2\pi}{|B|} = \frac{2\pi}{\pi} = 2\).</div>
+                    <div class="example-step"><strong>Step 4 (Phase Shift):</strong> Phase Shift = \(-\frac{C}{B} = -(\frac{-\pi/2}{\pi}) = \frac{1}{2}\). This is a shift of \(1/2\) unit to the right.</div>
+                    <div class="example-step"><strong>Step 5 (Vertical Shift):</strong> Vertical Shift = \(D = 1\). This is a shift of 1 unit up.</div>
+                    <div class="example-answer">The function is a cosine wave with an amplitude of 4, a period of 2, shifted 1/2 unit to the right and 1 unit up.</div>
+                </div>
+
+                <h3 class="subsection-title">Solving Trigonometric Equations</h3>
+                <p class="mb-4">
+                    This involves finding the angle(s) that satisfy a given trigonometric equation, usually within a specified interval like \([0, 2\pi]\).
+                </p>
+                <div class="example-box">
+                    <p class="example-title">Example 1: Find all solutions for \(\sin(x) = \frac{1}{2}\) in the interval \([0, 2\pi]\).</p>
+                    <div class="example-step"><strong>Step 1 (Identify Quadrants):</strong> Sine is positive in Quadrant I and Quadrant II.</div>
+                    <div class="example-step"><strong>Step 2 (Find Reference Angle):</strong> The reference angle for which \(\sin(x) = 1/2\) is \(x = \frac{\pi}{6}\).</div>
+                    <div class="example-step"><strong>Step 3 (Find Solution in Quadrant I):</strong> The solution in Quadrant I is the reference angle itself: \(x = \frac{\pi}{6}\).</div>
+                    <div class="example-step"><strong>Step 4 (Find Solution in Quadrant II):</strong> The solution in Quadrant II is found by \(\pi - \text{reference angle}\).
+                    <br>\(x = \pi - \frac{\pi}{6} = \frac{5\pi}{6}\).</div>
+                    <div class="example-answer">The solutions are \(x = \frac{\pi}{6}\) and \(x = \frac{5\pi}{6}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 2: Find all solutions for \(2\cos(x) + \sqrt{2} = 0\) in the interval \([0, 2\pi]\).</p>
+                    <div class="example-step"><strong>Step 1 (Isolate cos(x)):</strong>
+                    <br>\(2\cos(x) = -\sqrt{2}\)
+                    <br>\(\cos(x) = -\frac{\sqrt{2}}{2}\)</div>
+                    <div class="example-step"><strong>Step 2 (Identify Quadrants):</strong> Cosine is negative in Quadrant II and Quadrant III.</div>
+                    <div class="example-step"><strong>Step 3 (Find Reference Angle):</strong> The reference angle for which \(\cos(x) = \frac{\sqrt{2}}{2}\) is \(x = \frac{\pi}{4}\).</div>
+                    <div class="example-step"><strong>Step 4 (Find Solution in Quadrant II):</strong> The solution is \(\pi - \text{reference angle}\).
+                    <br>\(x = \pi - \frac{\pi}{4} = \frac{3\pi}{4}\).</div>
+                    <div class="example-step"><strong>Step 5 (Find Solution in Quadrant III):</strong> The solution is \(\pi + \text{reference angle}\).
+                    <br>\(x = \pi + \frac{\pi}{4} = \frac{5\pi}{4}\).</div>
+                    <div class="example-answer">The solutions are \(x = \frac{3\pi}{4}\) and \(x = \frac{5\pi}{4}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 3: Find all solutions for \(\tan(x) = -1\) in the interval \([0, 2\pi]\).</p>
+                    <div class="example-step"><strong>Step 1 (Identify Quadrants):</strong> Tangent is negative in Quadrant II and Quadrant IV.</div>
+                    <div class="example-step"><strong>Step 2 (Find Reference Angle):</strong> The reference angle for which \(\tan(x) = 1\) is \(x = \frac{\pi}{4}\).</div>
+                    <div class="example-step"><strong>Step 3 (Find Solution in Quadrant II):</strong> The solution is \(\pi - \text{reference angle}\).
+                    <br>\(x = \pi - \frac{\pi}{4} = \frac{3\pi}{4}\).</div>
+                    <div class="example-step"><strong>Step 4 (Find Solution in Quadrant IV):</strong> The solution is \(2\pi - \text{reference angle}\).
+                    <br>\(x = 2\pi - \frac{\pi}{4} = \frac{7\pi}{4}\).</div>
+                    <div class="example-answer">The solutions are \(x = \frac{3\pi}{4}\) and \(x = \frac{7\pi}{4}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 4 (Quadratic Form): Find all solutions for \(2\sin^2(x) - \sin(x) - 1 = 0\) in the interval \([0, 2\pi]\).</p>
+                    <div class="example-step"><strong>Step 1 (Factor the Equation):</strong> Let \(u = \sin(x)\). The equation becomes \(2u^2 - u - 1 = 0\).
+                    <br>Factoring gives \((2u+1)(u-1) = 0\).
+                    <br>So, \(u = -1/2\) or \(u = 1\). This means \(\sin(x) = -1/2\) or \(\sin(x) = 1\).</div>
+                    <div class="example-step"><strong>Step 2 (Solve \(\sin(x) = -1/2\)):</strong> Sine is negative in QIII and QIV. The reference angle is \(\pi/6\).
+                    <br>QIII solution: \(x = \pi + \pi/6 = 7\pi/6\).
+                    <br>QIV solution: \(x = 2\pi - \pi/6 = 11\pi/6\).</div>
+                    <div class="example-step"><strong>Step 3 (Solve \(\sin(x) = 1\)):</strong> This occurs at the top of the unit circle.
+                    <br>Solution: \(x = \pi/2\).</div>
+                    <div class="example-answer">The solutions are \(x = \frac{\pi}{2}\), \(x = \frac{7\pi}{6}\), and \(x = \frac{11\pi}{6}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 5 (Multiple Angle): Find all solutions for \(\cos(2x) = \frac{1}{2}\) in the interval \([0, 2\pi]\).</p>
+                    <div class="example-step"><strong>Step 1 (Solve for the angle 2x):</strong> Let \(\theta = 2x\). We first solve \(\cos(\theta) = 1/2\).
+                    <br>Cosine is positive in QI and QIV. The reference angle is \(\pi/3\).
+                    <br>So, \(\theta = \pi/3\) and \(\theta = 2\pi - \pi/3 = 5\pi/3\).</div>
+                    <div class="example-step"><strong>Step 2 (Account for the period):</strong> The period of \(\cos(2x)\) is \(\frac{2\pi}{2} = \pi\). This means we need to find all solutions for \(\theta\) in the interval \([0, 4\pi]\) (since \(0 \leq x \leq 2\pi \implies 0 \leq 2x \leq 4\pi\)).
+                    <br>We add \(2\pi\) to our initial solutions:
+                    <br>\(\theta = \pi/3 + 2\pi = 7\pi/3\)
+                    <br>\(\theta = 5\pi/3 + 2\pi = 11\pi/3\)</div>
+                    <div class="example-step"><strong>Step 3 (Solve for x):</strong> Now, set \(2x\) equal to all four solutions for \(\theta\) and divide by 2.
+                    <br>\(2x = \pi/3 \implies x = \pi/6\)
+                    <br>\(2x = 5\pi/3 \implies x = 5\pi/6\)
+                    <br>\(2x = 7\pi/3 \implies x = 7\pi/6\)
+                    <br>\(2x = 11\pi/3 \implies x = 11\pi/6\)</div>
+                    <div class="example-answer">The solutions are \(x = \frac{\pi}{6}, \frac{5\pi}{6}, \frac{7\pi}{6}, \frac{11\pi}{6}\).</div>
+                </div>
+                <div class="example-box">
+                    <p class="example-title">Example 6 (Reciprocal Function): Find all solutions for \(\sec(x) = -2\) in the interval \([0, 2\pi]\).</p>
+                    <div class="example-step"><strong>Step 1 (Rewrite in terms of cosine):</strong> Since \(\sec(x) = 1/\cos(x)\), the equation becomes \(1/\cos(x) = -2\), which simplifies to \(\cos(x) = -1/2\).</div>
+                    <div class="example-step"><strong>Step 2 (Identify Quadrants):</strong> Cosine is negative in Quadrant II and Quadrant III.</div>
+                    <div class="example-step"><strong>Step 3 (Find Reference Angle):</strong> The reference angle for which \(\cos(x) = 1/2\) is \(x = \frac{\pi}{3}\).</div>
+                    <div class="example-step"><strong>Step 4 (Find Solution in Quadrant II):</strong> The solution is \(\pi - \text{reference angle}\).
+                    <br>\(x = \pi - \frac{\pi}{3} = \frac{2\pi}{3}\).</div>
+                    <div class="example-step"><strong>Step 5 (Find Solution in Quadrant III):</strong> The solution is \(\pi + \text{reference angle}\).
+                    <br>\(x = \pi + \frac{\pi}{3} = \frac{4\pi}{3}\).</div>
+                    <div class="example-answer">The solutions are \(x = \frac{2\pi}{3}\) and \(x = \frac{4\pi}{3}\).</div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('unitCircleCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = 100;
+                const angle = -Math.PI / 4; // A generic angle for demonstration
+
+                // Point on circle
+                const pX = centerX + radius * Math.cos(angle);
+                const pY = centerY + radius * Math.sin(angle);
+
+                // Draw X-Axis (Blue)
+                ctx.beginPath();
+                ctx.moveTo(0, centerY);
+                ctx.lineTo(canvas.width, centerY);
+                ctx.strokeStyle = '#3b82f6'; // Blue-500
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Draw Y-Axis (Red)
+                ctx.beginPath();
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, canvas.height);
+                ctx.strokeStyle = '#ef4444'; // Red-500
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Draw Unit Circle
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                ctx.strokeStyle = '#6366f1'; // Indigo-500
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw Radius line
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(pX, pY);
+                ctx.strokeStyle = '#4b5563'; // Gray-600
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                // Draw triangle legs (bold and colored)
+                // Horizontal leg (x-component) - Blue
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(pX, centerY);
+                ctx.strokeStyle = '#1e40af'; // Dark Blue
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Vertical leg (y-component) - Red
+                ctx.beginPath();
+                ctx.moveTo(pX, centerY);
+                ctx.lineTo(pX, pY);
+                ctx.strokeStyle = '#b91c1c'; // Dark Red
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw Angle Arc
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 25, 0, angle, true);
+                ctx.strokeStyle = '#10b981'; // Emerald-500
+                ctx.stroke();
+
+                // Add Labels
+                ctx.font = 'bold 14px Inter';
+                ctx.fillStyle = '#3b82f6'; // Blue
+                ctx.fillText('x', canvas.width - 15, centerY - 8);
+                ctx.fillStyle = '#ef4444'; // Red
+                ctx.fillText('y', centerX + 8, 15);
+                
+                ctx.font = 'bold 14px Inter';
+                ctx.fillStyle = '#1f2937'; // Black
+                ctx.fillText('θ', centerX + 30, centerY - 10);
+                
+                ctx.fillStyle = '#3b82f6'; // Blue for x-related labels
+                ctx.fillText('x', centerX + (pX - centerX) / 2, centerY + 15);
+                
+                ctx.fillStyle = '#ef4444'; // Red for y-related labels
+                ctx.fillText('y', pX + 8, centerY + (pY - centerY) / 2);
+                
+                ctx.fillStyle = '#1f2937'; // Black for point label
+                ctx.font = 'bold 12px Inter';
+                ctx.fillText('(x, y)', pX, pY - 8);
+            }
+
+            const exampleCanvas = document.getElementById('unitCircleExampleCanvas');
+            if (exampleCanvas) {
+                const ctx = exampleCanvas.getContext('2d');
+                const centerX = exampleCanvas.width / 2;
+                const centerY = exampleCanvas.height / 2;
+                const radius = 100;
+                const angle = -Math.PI / 4; // Specific angle for the example
+
+                // Point on circle
+                const pX = centerX + radius * Math.cos(angle);
+                const pY = centerY + radius * Math.sin(angle);
+
+                // Draw Axes
+                ctx.beginPath();
+                ctx.moveTo(0, centerY);
+                ctx.lineTo(exampleCanvas.width, centerY);
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, exampleCanvas.height);
+                ctx.strokeStyle = '#d1d5db';
+                ctx.stroke();
+
+                // Draw Unit Circle
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                ctx.strokeStyle = '#6366f1';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw Radius line
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(pX, pY);
+                ctx.strokeStyle = '#4b5563';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                // Draw triangle legs
+                // Horizontal leg (x-component)
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(pX, centerY);
+                ctx.strokeStyle = '#1e40af'; // Dark Blue
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                // Vertical leg (y-component)
+                ctx.beginPath();
+                ctx.moveTo(pX, centerY);
+                ctx.lineTo(pX, pY);
+                ctx.strokeStyle = '#b91c1c'; // Dark Red
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw Angle Arc
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 25, 0, angle, true);
+                ctx.strokeStyle = '#10b981'; // Emerald-500
+                ctx.stroke();
+
+                // Add Labels
+                ctx.fillStyle = '#1f2937';
+                ctx.font = 'bold 14px Inter';
+                ctx.fillText('π/4', centerX + 30, centerY - 10);
+                ctx.font = 'bold 14px Inter';
+                ctx.fillText('(√2/2, √2/2)', pX + 5, pY - 5);
+            }
+
+            const sineGraphCanvas = document.getElementById('sineGraphCanvas');
+            if (sineGraphCanvas) {
+                const ctx = sineGraphCanvas.getContext('2d');
+                const width = sineGraphCanvas.width;
+                const height = sineGraphCanvas.height;
+                const centerY = height / 2;
+                const centerX = 40;
+
+                // Draw axes
+                ctx.beginPath();
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, height); // Y-axis
+                ctx.moveTo(0, centerY);
+                ctx.lineTo(width, centerY); // X-axis
+                ctx.strokeStyle = '#d1d5db';
+                ctx.stroke();
+
+                // Draw sine wave
+                ctx.beginPath();
+                ctx.strokeStyle = '#6366f1';
+                ctx.lineWidth = 2;
+                const amplitude = 80;
+                const frequency = 0.015;
+                const periodX = (2 * Math.PI) / frequency;
+
+                for (let x = 0; x < width - centerX; x++) {
+                    const y = Math.sin(x * frequency) * amplitude;
+                    ctx.lineTo(centerX + x, centerY - y);
+                }
+                ctx.stroke();
+
+                // Draw Amplitude line and label
+                ctx.beginPath();
+                ctx.setLineDash([3, 4]);
+                ctx.moveTo(centerX + periodX / 4, centerY - amplitude);
+                ctx.lineTo(centerX + periodX / 4, centerY);
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.stroke();
+                
+                ctx.fillStyle = '#b91c1c';
+                ctx.font = 'bold 14px Inter';
+                ctx.fillText('Amplitude |A|', centerX + periodX / 4 + 12, centerY - amplitude / 2);
+
+                // Draw Period line and label
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY + 25);
+                ctx.lineTo(centerX + periodX, centerY + 25);
+                ctx.strokeStyle = '#10b981'; // Green
+                ctx.stroke();
+                ctx.moveTo(centerX + periodX, centerY + 25);
+                ctx.lineTo(centerX + periodX - 5, centerY + 20);
+                ctx.moveTo(centerX + periodX, centerY + 25);
+                ctx.lineTo(centerX + periodX - 5, centerY + 30);
+                ctx.stroke();
+
+                ctx.fillStyle = '#059669';
+                ctx.font = 'bold 14px Inter';
+                ctx.fillText('Period (2π/|B|)', centerX + periodX / 2 - 60, centerY + 45);
+                ctx.setLineDash([]);
+            }
+
+            const transformationCanvas = document.getElementById('transformationCanvas');
+            if (transformationCanvas) {
+                const ctx = transformationCanvas.getContext('2d');
+                const width = transformationCanvas.width;
+                const height = transformationCanvas.height;
+
+                // Transformation parameters
+                const scaleX = 20;
+                const scaleY = 15;
+                const originX = width / 2 - 30;
+                const originY = height - 80;
+
+                // Function to convert graph coords to canvas coords
+                const toCanvasX = (x) => originX + x * scaleX;
+                const toCanvasY = (y) => originY - y * scaleY;
+
+                // Draw Axes
+                ctx.beginPath();
+                ctx.moveTo(0, originY);
+                ctx.lineTo(width, originY); // X-axis
+                ctx.moveTo(originX, 0);
+                ctx.lineTo(originX, height); // Y-axis
+                ctx.strokeStyle = '#d1d5db';
+                ctx.stroke();
+
+                // Draw Parent Function: f(x) = x^2 (dashed grey)
+                ctx.beginPath();
+                ctx.strokeStyle = '#9ca3af';
+                ctx.setLineDash([4, 4]);
+                for (let x = -10; x <= 10; x += 0.1) {
+                    const y = x * x;
+                    ctx.lineTo(toCanvasX(x), toCanvasY(y));
+                }
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Draw Transformed Function: g(x) = -2(x+3)^2 + 4 (solid purple)
+                ctx.beginPath();
+                ctx.strokeStyle = '#9333ea'; // Purple
+                ctx.lineWidth = 2;
+                for (let x = -10; x <= 10; x += 0.1) {
+                    const y = -2 * Math.pow(x + 3, 2) + 4;
+                    ctx.lineTo(toCanvasX(x), toCanvasY(y));
+                }
+                ctx.stroke();
+                ctx.lineWidth = 1;
+
+                // Draw shift arrows and labels
+                ctx.setLineDash([2, 2]);
+                // Horizontal shift arrow
+                ctx.beginPath();
+                ctx.moveTo(toCanvasX(0), toCanvasY(0));
+                ctx.lineTo(toCanvasX(-3), toCanvasY(0));
+                ctx.strokeStyle = '#3b82f6'; // Blue
+                ctx.stroke();
+                
+                // Vertical shift arrow
+                ctx.beginPath();
+                ctx.moveTo(toCanvasX(-3), toCanvasY(0));
+                ctx.lineTo(toCanvasX(-3), toCanvasY(4));
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Add text labels for shifts
+                ctx.fillStyle = '#1d4ed8';
+                ctx.font = '12px Inter';
+                ctx.fillText('Shift Left 3', toCanvasX(-1.5) - 30, toCanvasY(0) + 15);
+                ctx.fillStyle = '#b91c1c';
+                ctx.fillText('Shift Up 4', toCanvasX(-3) + 8, toCanvasY(2));
+            }
+
+            // --- Systems of Equations Graphs ---
+            const drawSystemGraph = (canvasId, drawLines) => {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const width = canvas.width;
+                const height = canvas.height;
+
+                // Clear canvas and set background
+                ctx.fillStyle = '#f9fafb';
+                ctx.fillRect(0, 0, width, height);
+
+                // Draw axes
+                ctx.beginPath();
+                ctx.moveTo(0, height / 2);
+                ctx.lineTo(width, height / 2); // X-axis
+                ctx.moveTo(width / 2, 0);
+                ctx.lineTo(width / 2, height); // Y-axis
+                ctx.strokeStyle = '#e5e7eb'; // Gray-200
+                ctx.stroke();
+
+                // Call the specific line drawing function
+                drawLines(ctx, width, height);
+            };
+
+            // 1. One Solution
+            drawSystemGraph('oneSolutionCanvas', (ctx, width, height) => {
+                ctx.lineWidth = 2;
+                // Line 1
+                ctx.beginPath();
+                ctx.moveTo(20, 20);
+                ctx.lineTo(width - 20, height - 20);
+                ctx.strokeStyle = '#3b82f6'; // Blue
+                ctx.stroke();
+
+                // Line 2
+                ctx.beginPath();
+                ctx.moveTo(20, height - 20);
+                ctx.lineTo(width - 20, 20);
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.stroke();
+            });
+
+            // 2. No Solution
+            drawSystemGraph('noSolutionCanvas', (ctx, width, height) => {
+                ctx.lineWidth = 2;
+                // Line 1
+                ctx.beginPath();
+                ctx.moveTo(20, 50);
+                ctx.lineTo(width - 20, 100);
+                ctx.strokeStyle = '#3b82f6'; // Blue
+                ctx.stroke();
+
+                // Line 2 (parallel)
+                ctx.beginPath();
+                ctx.moveTo(20, 80);
+                ctx.lineTo(width - 20, 130);
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.stroke();
+            });
+
+            // 3. Infinite Solutions
+            drawSystemGraph('infiniteSolutionCanvas', (ctx, width, height) => {
+                ctx.lineWidth = 3;
+                // Draw one line to represent both
+                ctx.beginPath();
+                ctx.moveTo(20, 20);
+                ctx.lineTo(width - 20, height - 20);
+                ctx.strokeStyle = '#8b5cf6'; // Violet
+                ctx.setLineDash([6, 6]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            });
+
+            // --- Linear-Quadratic System Graphs ---
+
+            const drawParabola = (ctx, originX, originY, a, k) => {
+                ctx.beginPath();
+                ctx.strokeStyle = '#9333ea'; // Purple
+                ctx.lineWidth = 2;
+                for (let x = -originX; x < originX; x += 2) {
+                    const y = a * x * x + k;
+                    ctx.lineTo(originX + x, originY - y);
+                }
+                ctx.stroke();
+            };
+
+            drawSystemGraph('lqTwoSolutionsCanvas', (ctx, width, height) => {
+                const originX = width / 2;
+                const originY = height - 20;
+                
+                // Draw Parabola y = 0.02x^2 + 20
+                drawParabola(ctx, originX, originY, 0.02, 20);
+
+                // Draw intersecting line
+                ctx.beginPath();
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.lineWidth = 2;
+                ctx.moveTo(0, originY - 80);
+                ctx.lineTo(width, originY - 60);
+                ctx.stroke();
+            });
+
+            drawSystemGraph('lqOneSolutionCanvas', (ctx, width, height) => {
+                const originX = width / 2;
+                const originY = height - 20;
+
+                // Draw Parabola y = 0.02x^2 + 40
+                drawParabola(ctx, originX, originY, 0.02, 40);
+
+                // Draw tangent line
+                ctx.beginPath();
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.lineWidth = 2;
+                ctx.moveTo(0, originY - 40);
+                ctx.lineTo(width, originY - 40);
+                ctx.stroke();
+            });
+
+            drawSystemGraph('lqNoSolutionsCanvas', (ctx, width, height) => {
+                const originX = width / 2;
+                const originY = height - 20;
+
+                // Draw Parabola y = 0.02x^2 + 80
+                drawParabola(ctx, originX, originY, 0.02, 80);
+
+                // Draw non-intersecting line
+                ctx.beginPath();
+                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.lineWidth = 2;
+                ctx.moveTo(0, originY - 40);
+                ctx.lineTo(width, originY - 40);
+                ctx.stroke();
+            });
+        });
+    </script>
+</body>
+</html>
