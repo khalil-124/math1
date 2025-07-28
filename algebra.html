@@ -111,31 +111,6 @@
             gap: 1rem;
             margin: 2rem 0;
         }
-        .sticky-nav {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        .main-content {
-            padding-top: 1rem;
-        }
-        .toggle-indicator {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            margin-left: 0.5rem;
-            transition: transform 0.3s;
-        }
-        .chevron-down {
-            border-top: 5px solid #374151;
-        }
-        .chevron-up {
-            border-bottom: 5px solid #374151;
-            transform: rotate(180deg);
-        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -149,9 +124,9 @@
             </p>
         </header>
 
-        <main class="main-content">
+        <main>
 
-            <nav class="topic-card sticky-nav" id="table-of-contents">
+            <nav class="topic-card" id="table-of-contents">
                 <h2 class="section-title">Table of Contents</h2>
                 <ol class="list-decimal list-inside space-y-4 text-lg">
                     <li>
@@ -1316,17 +1291,17 @@
                 ctx.fillText('x', canvas.width - 15, centerY - 8);
                 ctx.fillStyle = '#ef4444'; // Red
                 ctx.fillText('y', centerX + 8, 15);
-
+                
                 ctx.font = 'bold 14px Inter';
                 ctx.fillStyle = '#1f2937'; // Black
                 ctx.fillText('θ', centerX + 30, centerY - 10);
-
+                
                 ctx.fillStyle = '#3b82f6'; // Blue for x-related labels
                 ctx.fillText('x', centerX + (pX - centerX) / 2, centerY + 15);
-
+                
                 ctx.fillStyle = '#ef4444'; // Red for y-related labels
                 ctx.fillText('y', pX + 8, centerY + (pY - centerY) / 2);
-
+                
                 ctx.fillStyle = '#1f2937'; // Black for point label
                 ctx.font = 'bold 12px Inter';
                 ctx.fillText('(x, y)', pX, pY - 8);
@@ -1436,7 +1411,7 @@
                 ctx.lineTo(centerX + periodX / 4, centerY);
                 ctx.strokeStyle = '#ef4444'; // Red
                 ctx.stroke();
-
+                
                 ctx.fillStyle = '#b91c1c';
                 ctx.font = 'bold 14px Inter';
                 ctx.fillText('Amplitude |A|', centerX + periodX / 4 + 12, centerY - amplitude / 2);
@@ -1514,7 +1489,7 @@
                 ctx.lineTo(toCanvasX(-3), toCanvasY(0));
                 ctx.strokeStyle = '#3b82f6'; // Blue
                 ctx.stroke();
-
+                
                 // Vertical shift arrow
                 ctx.beginPath();
                 ctx.moveTo(toCanvasX(-3), toCanvasY(0));
@@ -1621,7 +1596,7 @@
             drawSystemGraph('lqTwoSolutionsCanvas', (ctx, width, height) => {
                 const originX = width / 2;
                 const originY = height - 20;
-
+                
                 // Draw Parabola y = 0.02x^2 + 20
                 drawParabola(ctx, originX, originY, 0.02, 20);
 
