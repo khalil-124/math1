@@ -98,6 +98,9 @@
             color: #4b5563;
             margin-top: 0.75rem;
         }
+        #table-of-contents {
+            position: static; /* Ensures the element scrolls normally with the page */
+        }
         #table-of-contents a {
             transition: color 0.2s;
         }
@@ -110,31 +113,6 @@
             justify-content: space-around;
             gap: 1rem;
             margin: 2rem 0;
-        }
-        .sticky-nav {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        .main-content {
-            padding-top: 1rem;
-        }
-        .toggle-indicator {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            margin-left: 0.5rem;
-            transition: transform 0.3s;
-        }
-        .chevron-down {
-            border-top: 5px solid #374151;
-        }
-        .chevron-up {
-            border-bottom: 5px solid #374151;
-            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -149,9 +127,9 @@
             </p>
         </header>
 
-        <main class="main-content">
+        <main>
 
-            <nav class="topic-card sticky-nav" id="table-of-contents">
+            <nav class="topic-card" id="table-of-contents">
                 <h2 class="section-title">Table of Contents</h2>
                 <ol class="list-decimal list-inside space-y-4 text-lg">
                     <li>
@@ -1240,10 +1218,53 @@
 
         </main>
 
+        <button id="backToTopBtn" title="Back to Table of Contents" class="hidden fixed bottom-8 right-8 bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-transform transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+            </svg>
+        </button>
+
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- Table of Contents Smooth Scroll ---
+            const toc = document.getElementById('table-of-contents');
+            const backToTopBtn = document.getElementById('backToTopBtn');
+
+            if (toc) {
+                toc.addEventListener('click', function(e) {
+                    // Check if a link was clicked and it's an anchor link
+                    if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
+                        e.preventDefault(); // Stop the browser's default jump
+                        const targetId = e.target.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            // Smoothly scroll to the target element
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            }
+
+            // --- Back to Top Button Logic ---
+            if (backToTopBtn && toc) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTopBtn.classList.remove('hidden');
+                    } else {
+                        backToTopBtn.classList.add('hidden');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', () => {
+                    toc.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
             const canvas = document.getElementById('unitCircleCanvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
