@@ -115,6 +115,22 @@ figcaption {
     gap: 1rem;
     margin: 2rem 0;
 }
+        .toggle-indicator {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        .chevron-down {
+            border-top: 5px solid #374151;
+        }
+        .chevron-up {
+            border-bottom: 5px solid #374151;
+            transform: rotate(180deg);
+        }
     </style>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
@@ -129,9 +145,8 @@ figcaption {
             </p>
         </header>
 
-        <main>
-
-            <nav class="topic-card sticky-toc" id="table-of-contents">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <nav class="md:col-span-1 topic-card sticky-toc" id="table-of-contents">
                 <h2 class="section-title">Table of Contents</h2>
                 <ol class="list-decimal list-inside space-y-4 text-lg">
                     <li>
@@ -172,6 +187,7 @@ figcaption {
                 </ol>
             </nav>
 
+            <main class="md:col-span-3">
             <section id="algebraic-expressions" class="topic-card">
                 <h2 class="section-title">1. Algebraic Expressions</h2>
                 <p class="mb-4">
@@ -1217,9 +1233,8 @@ figcaption {
                     <div class="example-answer">The solutions are \(x = \frac{2\pi}{3}\) and \(x = \frac{4\pi}{3}\).</div>
                 </div>
             </section>
-
-        </main>
-
+            </main>
+        </div>
     </div>
 
     <script>
@@ -1230,7 +1245,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const steps = box.querySelectorAll('.example-step');
         if (title && steps.length > 0) {
             title.style.cursor = 'pointer';
-            title.innerHTML += ' <span class="toggle-indicator">(Show Steps)</span>';
+                    title.innerHTML += ' <span class="toggle-indicator"></span>';
+                    const indicator = title.querySelector('.toggle-indicator');
+                    indicator.classList.add('chevron-down');
             steps.forEach(step => step.style.display = 'none');
 
             title.addEventListener('click', () => {
@@ -1238,7 +1255,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 steps.forEach(step => {
                     step.style.display = isHidden ? 'block' : 'none';
                 });
-                title.querySelector('.toggle-indicator').textContent = isHidden ? ' (Hide Steps)' : ' (Show Steps)';
+                        indicator.classList.toggle('chevron-down');
+                        indicator.classList.toggle('chevron-up');
             });
         }
     });
