@@ -103,20 +103,18 @@ figcaption {
 #table-of-contents ul a {
     font-weight: 500;
 }
-.sticky-top {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: white;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
 .diagram-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 1rem;
     margin: 2rem 0;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
         .toggle-indicator {
             display: inline-block;
@@ -139,15 +137,15 @@ figcaption {
 </head>
 <body class="text-gray-800">
 
-    <header class="text-center mb-12 container mx-auto p-4 md:p-8 max-w-5xl">
+<div class="container mx-auto p-4 md:p-8 max-w-5xl">
+    <header class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold text-purple-700">Algebra and Functions</h1>
             <p class="mt-4 text-lg text-gray-600">
                 The most heavily weighted domain (32-42%) on the EST II Math Level 1 exam. This section covers algebraic manipulation, solving equations, and understanding the properties of various functions.
             </p>
     </header>
 
-    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
-        <nav class="topic-card sticky-top" id="table-of-contents">
+        <nav class="topic-card" id="table-of-contents">
             <h2 class="section-title">Table of Contents</h2>
             <ol class="list-decimal list-inside space-y-4 text-lg">
                 <li>
@@ -1236,7 +1234,6 @@ figcaption {
             </section>
         </main>
     </div>
-    </div>
 
     <button id="back-to-top" class="hidden fixed bottom-8 right-8 bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1281,6 +1278,18 @@ document.addEventListener('DOMContentLoaded', function() {
             backToTopButton.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+
+            const navbar = document.getElementById("table-of-contents");
+            const sticky = navbar.offsetTop;
+
+            function stickNavbar() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky")
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+            window.onscroll = function() {stickNavbar()};
 
     const canvas = document.getElementById('unitCircleCanvas');
     if (canvas) {
