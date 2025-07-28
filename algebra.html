@@ -6,112 +6,9 @@
     <title>EST II Math: In-Depth Guide to Algebra and Functions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="algebra.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1f2937;
-        }
-        .topic-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #9333ea; /* Fuchsia 600 */
-            border-bottom: 3px solid #f3e8ff; /* Fuchsia 100 */
-            padding-bottom: 0.75rem;
-        }
-        .subsection-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #a855f7; /* Fuchsia 500 */
-        }
-        .tertiary-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #374151;
-        }
-        .formula-box {
-            background-color: #f5f3ff; /* Violet 50 */
-            border-left: 4px solid #8b5cf6; /* Violet 500 */
-            padding: 1.25rem;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0.375rem;
-            font-size: 1.1rem;
-            color: #5b21b6; /* Violet 800 */
-            line-height: 1.7;
-        }
-        .example-box {
-            background-color: #f9fafb;
-            border: 1px solid #e5e7eb;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            border-radius: 0.5rem;
-        }
-        .example-title {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-        }
-        .example-step {
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            border-left: 2px solid #d1d5db;
-        }
-        .example-answer {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            color: #166534;
-        }
-        p {
-            line-height: 1.65;
-        }
-        #unitCircleCanvas {
-            display: block;
-            margin: 1.5rem auto;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            background-color: #f9fafb;
-        }
-        figcaption {
-            text-align: center;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #4b5563;
-            margin-top: 0.75rem;
-        }
-        #table-of-contents a {
-            transition: color 0.2s;
-        }
-        #table-of-contents ul a {
-            font-weight: 500;
-        }
-        .diagram-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-    </style>
 </head>
 <body class="text-gray-800">
 
@@ -126,7 +23,7 @@
 
         <main>
 
-            <nav class="topic-card" id="table-of-contents">
+            <nav class="topic-card sticky-toc" id="table-of-contents">
                 <h2 class="section-title">Table of Contents</h2>
                 <ol class="list-decimal list-inside space-y-4 text-lg">
                     <li>
@@ -538,15 +435,15 @@
                 </p>
                 <div class="diagram-container">
                     <figure>
-                        <canvas id="oneSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="oneSolutionCanvas" width="250" height="200" aria-label="A diagram showing two lines intersecting at a single point, representing a system of equations with one solution."></canvas>
                         <figcaption>One Solution (Intersecting Lines)</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="noSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="noSolutionCanvas" width="250" height="200" aria-label="A diagram showing two parallel lines that never intersect, representing a system of equations with no solution."></canvas>
                         <figcaption>No Solution (Parallel Lines)</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="infiniteSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="infiniteSolutionCanvas" width="250" height="200" aria-label="A diagram showing two lines that are identical and overlap completely, representing a system of equations with infinite solutions."></canvas>
                         <figcaption>Infinite Solutions (Same Line)</figcaption>
                     </figure>
                 </div>
@@ -645,15 +542,15 @@
                 </p>
                 <div class="diagram-container">
                     <figure>
-                        <canvas id="lqTwoSolutionsCanvas" width="250" height="200"></canvas>
+                        <canvas id="lqTwoSolutionsCanvas" width="250" height="200" aria-label="A diagram showing a parabola and a line intersecting at two distinct points."></canvas>
                         <figcaption>Two Solutions</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="lqOneSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="lqOneSolutionCanvas" width="250" height="200" aria-label="A diagram showing a line that is tangent to a parabola, intersecting at exactly one point."></canvas>
                         <figcaption>One Solution (Tangent)</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="lqNoSolutionsCanvas" width="250" height="200"></canvas>
+                        <canvas id="lqNoSolutionsCanvas" width="250" height="200" aria-label="A diagram showing a parabola and a line that do not intersect, representing a system with no real solutions."></canvas>
                         <figcaption>No Real Solutions</figcaption>
                     </figure>
                 </div>
@@ -979,7 +876,7 @@
                 </div>
                 <div class="example-box">
                     <figure class="mb-6">
-                        <canvas id="transformationCanvas" width="400" height="300"></canvas>
+                        <canvas id="transformationCanvas" width="400" height="300" aria-label="A diagram showing the graph of the parent function f(x) = x^2 as a dashed gray parabola, and the transformed function g(x) = -2(x+3)^2 + 4 as a solid purple parabola. Arrows indicate a shift left by 3 units and up by 4 units."></canvas>
                         <figcaption>Transformations of f(x) = x^2</figcaption>
                     </figure>
                     <p class="example-title">Example 1: Describe the transformations that map the graph of \(f(x) = x^2\) to the graph of \(g(x) = -2(x+3)^2 + 4\).</p>
@@ -1054,7 +951,7 @@
                 <p class="mb-4">
                     The unit circle is a circle with a radius of 1 centered at the origin. For any angle \(\theta\), the point \((x, y)\) where the angle's terminal side intersects the circle gives the values for cosine and sine.
                 </p>
-                <canvas id="unitCircleCanvas" width="300" height="300"></canvas>
+                <canvas id="unitCircleCanvas" width="300" height="300" aria-label="The unit circle centered at the origin. An angle theta is shown, with its terminal side intersecting the circle at a point (x, y). The x-component (cosine) is shown as a blue horizontal line, and the y-component (sine) is shown as a red vertical line, forming a right triangle."></canvas>
                 <div class="formula-box">
                     <strong>Unit Circle Definitions:</strong><br>
                     \(\cos(\theta) = x\)<br>
@@ -1064,7 +961,7 @@
 
                 <div class="example-box">
                     <figure>
-                        <canvas id="unitCircleExampleCanvas" width="300" height="300"></canvas>
+                        <canvas id="unitCircleExampleCanvas" width="300" height="300" aria-label="The unit circle showing the angle pi/4 radians (45 degrees). The terminal side of the angle intersects the circle at the point (sqrt(2)/2, sqrt(2)/2)."></canvas>
                         <figcaption>Diagram 1</figcaption>
                     </figure>
                     <p class="example-title">Example 1: Based on Diagram 1, find the values of \(\sin(\pi/4)\), \(\cos(\pi/4)\), and \(\tan(\pi/4)\).</p>
@@ -1090,7 +987,7 @@
                 </div>
 
                 <figure>
-                    <canvas id="sineGraphCanvas" width="500" height="250"></canvas>
+                    <canvas id="sineGraphCanvas" width="500" height="250" aria-label="A graph of a sine wave, y = A sin(Bx). The amplitude, |A|, is shown as the maximum vertical distance from the horizontal axis. The period, 2pi/|B|, is shown as the horizontal length of one complete cycle of the wave."></canvas>
                     <figcaption>Graph of y = A sin(Bx) showing Amplitude and Period</figcaption>
                 </figure>
 
@@ -1217,430 +1114,6 @@
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('unitCircleCanvas');
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const radius = 100;
-                const angle = -Math.PI / 4; // A generic angle for demonstration
-
-                // Point on circle
-                const pX = centerX + radius * Math.cos(angle);
-                const pY = centerY + radius * Math.sin(angle);
-
-                // Draw X-Axis (Blue)
-                ctx.beginPath();
-                ctx.moveTo(0, centerY);
-                ctx.lineTo(canvas.width, centerY);
-                ctx.strokeStyle = '#3b82f6'; // Blue-500
-                ctx.lineWidth = 1;
-                ctx.stroke();
-
-                // Draw Y-Axis (Red)
-                ctx.beginPath();
-                ctx.moveTo(centerX, 0);
-                ctx.lineTo(centerX, canvas.height);
-                ctx.strokeStyle = '#ef4444'; // Red-500
-                ctx.lineWidth = 1;
-                ctx.stroke();
-
-                // Draw Unit Circle
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-                ctx.strokeStyle = '#6366f1'; // Indigo-500
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Draw Radius line
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(pX, pY);
-                ctx.strokeStyle = '#4b5563'; // Gray-600
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-
-                // Draw triangle legs (bold and colored)
-                // Horizontal leg (x-component) - Blue
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(pX, centerY);
-                ctx.strokeStyle = '#1e40af'; // Dark Blue
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Vertical leg (y-component) - Red
-                ctx.beginPath();
-                ctx.moveTo(pX, centerY);
-                ctx.lineTo(pX, pY);
-                ctx.strokeStyle = '#b91c1c'; // Dark Red
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Draw Angle Arc
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, 25, 0, angle, true);
-                ctx.strokeStyle = '#10b981'; // Emerald-500
-                ctx.stroke();
-
-                // Add Labels
-                ctx.font = 'bold 14px Inter';
-                ctx.fillStyle = '#3b82f6'; // Blue
-                ctx.fillText('x', canvas.width - 15, centerY - 8);
-                ctx.fillStyle = '#ef4444'; // Red
-                ctx.fillText('y', centerX + 8, 15);
-                
-                ctx.font = 'bold 14px Inter';
-                ctx.fillStyle = '#1f2937'; // Black
-                ctx.fillText('θ', centerX + 30, centerY - 10);
-                
-                ctx.fillStyle = '#3b82f6'; // Blue for x-related labels
-                ctx.fillText('x', centerX + (pX - centerX) / 2, centerY + 15);
-                
-                ctx.fillStyle = '#ef4444'; // Red for y-related labels
-                ctx.fillText('y', pX + 8, centerY + (pY - centerY) / 2);
-                
-                ctx.fillStyle = '#1f2937'; // Black for point label
-                ctx.font = 'bold 12px Inter';
-                ctx.fillText('(x, y)', pX, pY - 8);
-            }
-
-            const exampleCanvas = document.getElementById('unitCircleExampleCanvas');
-            if (exampleCanvas) {
-                const ctx = exampleCanvas.getContext('2d');
-                const centerX = exampleCanvas.width / 2;
-                const centerY = exampleCanvas.height / 2;
-                const radius = 100;
-                const angle = -Math.PI / 4; // Specific angle for the example
-
-                // Point on circle
-                const pX = centerX + radius * Math.cos(angle);
-                const pY = centerY + radius * Math.sin(angle);
-
-                // Draw Axes
-                ctx.beginPath();
-                ctx.moveTo(0, centerY);
-                ctx.lineTo(exampleCanvas.width, centerY);
-                ctx.moveTo(centerX, 0);
-                ctx.lineTo(centerX, exampleCanvas.height);
-                ctx.strokeStyle = '#d1d5db';
-                ctx.stroke();
-
-                // Draw Unit Circle
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-                ctx.strokeStyle = '#6366f1';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Draw Radius line
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(pX, pY);
-                ctx.strokeStyle = '#4b5563';
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-
-                // Draw triangle legs
-                // Horizontal leg (x-component)
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(pX, centerY);
-                ctx.strokeStyle = '#1e40af'; // Dark Blue
-                ctx.lineWidth = 2;
-                ctx.stroke();
-                // Vertical leg (y-component)
-                ctx.beginPath();
-                ctx.moveTo(pX, centerY);
-                ctx.lineTo(pX, pY);
-                ctx.strokeStyle = '#b91c1c'; // Dark Red
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Draw Angle Arc
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, 25, 0, angle, true);
-                ctx.strokeStyle = '#10b981'; // Emerald-500
-                ctx.stroke();
-
-                // Add Labels
-                ctx.fillStyle = '#1f2937';
-                ctx.font = 'bold 14px Inter';
-                ctx.fillText('π/4', centerX + 30, centerY - 10);
-                ctx.font = 'bold 14px Inter';
-                ctx.fillText('(√2/2, √2/2)', pX + 5, pY - 5);
-            }
-
-            const sineGraphCanvas = document.getElementById('sineGraphCanvas');
-            if (sineGraphCanvas) {
-                const ctx = sineGraphCanvas.getContext('2d');
-                const width = sineGraphCanvas.width;
-                const height = sineGraphCanvas.height;
-                const centerY = height / 2;
-                const centerX = 40;
-
-                // Draw axes
-                ctx.beginPath();
-                ctx.moveTo(centerX, 0);
-                ctx.lineTo(centerX, height); // Y-axis
-                ctx.moveTo(0, centerY);
-                ctx.lineTo(width, centerY); // X-axis
-                ctx.strokeStyle = '#d1d5db';
-                ctx.stroke();
-
-                // Draw sine wave
-                ctx.beginPath();
-                ctx.strokeStyle = '#6366f1';
-                ctx.lineWidth = 2;
-                const amplitude = 80;
-                const frequency = 0.015;
-                const periodX = (2 * Math.PI) / frequency;
-
-                for (let x = 0; x < width - centerX; x++) {
-                    const y = Math.sin(x * frequency) * amplitude;
-                    ctx.lineTo(centerX + x, centerY - y);
-                }
-                ctx.stroke();
-
-                // Draw Amplitude line and label
-                ctx.beginPath();
-                ctx.setLineDash([3, 4]);
-                ctx.moveTo(centerX + periodX / 4, centerY - amplitude);
-                ctx.lineTo(centerX + periodX / 4, centerY);
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.stroke();
-                
-                ctx.fillStyle = '#b91c1c';
-                ctx.font = 'bold 14px Inter';
-                ctx.fillText('Amplitude |A|', centerX + periodX / 4 + 12, centerY - amplitude / 2);
-
-                // Draw Period line and label
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY + 25);
-                ctx.lineTo(centerX + periodX, centerY + 25);
-                ctx.strokeStyle = '#10b981'; // Green
-                ctx.stroke();
-                ctx.moveTo(centerX + periodX, centerY + 25);
-                ctx.lineTo(centerX + periodX - 5, centerY + 20);
-                ctx.moveTo(centerX + periodX, centerY + 25);
-                ctx.lineTo(centerX + periodX - 5, centerY + 30);
-                ctx.stroke();
-
-                ctx.fillStyle = '#059669';
-                ctx.font = 'bold 14px Inter';
-                ctx.fillText('Period (2π/|B|)', centerX + periodX / 2 - 60, centerY + 45);
-                ctx.setLineDash([]);
-            }
-
-            const transformationCanvas = document.getElementById('transformationCanvas');
-            if (transformationCanvas) {
-                const ctx = transformationCanvas.getContext('2d');
-                const width = transformationCanvas.width;
-                const height = transformationCanvas.height;
-
-                // Transformation parameters
-                const scaleX = 20;
-                const scaleY = 15;
-                const originX = width / 2 - 30;
-                const originY = height - 80;
-
-                // Function to convert graph coords to canvas coords
-                const toCanvasX = (x) => originX + x * scaleX;
-                const toCanvasY = (y) => originY - y * scaleY;
-
-                // Draw Axes
-                ctx.beginPath();
-                ctx.moveTo(0, originY);
-                ctx.lineTo(width, originY); // X-axis
-                ctx.moveTo(originX, 0);
-                ctx.lineTo(originX, height); // Y-axis
-                ctx.strokeStyle = '#d1d5db';
-                ctx.stroke();
-
-                // Draw Parent Function: f(x) = x^2 (dashed grey)
-                ctx.beginPath();
-                ctx.strokeStyle = '#9ca3af';
-                ctx.setLineDash([4, 4]);
-                for (let x = -10; x <= 10; x += 0.1) {
-                    const y = x * x;
-                    ctx.lineTo(toCanvasX(x), toCanvasY(y));
-                }
-                ctx.stroke();
-                ctx.setLineDash([]);
-
-                // Draw Transformed Function: g(x) = -2(x+3)^2 + 4 (solid purple)
-                ctx.beginPath();
-                ctx.strokeStyle = '#9333ea'; // Purple
-                ctx.lineWidth = 2;
-                for (let x = -10; x <= 10; x += 0.1) {
-                    const y = -2 * Math.pow(x + 3, 2) + 4;
-                    ctx.lineTo(toCanvasX(x), toCanvasY(y));
-                }
-                ctx.stroke();
-                ctx.lineWidth = 1;
-
-                // Draw shift arrows and labels
-                ctx.setLineDash([2, 2]);
-                // Horizontal shift arrow
-                ctx.beginPath();
-                ctx.moveTo(toCanvasX(0), toCanvasY(0));
-                ctx.lineTo(toCanvasX(-3), toCanvasY(0));
-                ctx.strokeStyle = '#3b82f6'; // Blue
-                ctx.stroke();
-                
-                // Vertical shift arrow
-                ctx.beginPath();
-                ctx.moveTo(toCanvasX(-3), toCanvasY(0));
-                ctx.lineTo(toCanvasX(-3), toCanvasY(4));
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.stroke();
-                ctx.setLineDash([]);
-
-                // Add text labels for shifts
-                ctx.fillStyle = '#1d4ed8';
-                ctx.font = '12px Inter';
-                ctx.fillText('Shift Left 3', toCanvasX(-1.5) - 30, toCanvasY(0) + 15);
-                ctx.fillStyle = '#b91c1c';
-                ctx.fillText('Shift Up 4', toCanvasX(-3) + 8, toCanvasY(2));
-            }
-
-            // --- Systems of Equations Graphs ---
-            const drawSystemGraph = (canvasId, drawLines) => {
-                const canvas = document.getElementById(canvasId);
-                if (!canvas) return;
-                const ctx = canvas.getContext('2d');
-                const width = canvas.width;
-                const height = canvas.height;
-
-                // Clear canvas and set background
-                ctx.fillStyle = '#f9fafb';
-                ctx.fillRect(0, 0, width, height);
-
-                // Draw axes
-                ctx.beginPath();
-                ctx.moveTo(0, height / 2);
-                ctx.lineTo(width, height / 2); // X-axis
-                ctx.moveTo(width / 2, 0);
-                ctx.lineTo(width / 2, height); // Y-axis
-                ctx.strokeStyle = '#e5e7eb'; // Gray-200
-                ctx.stroke();
-
-                // Call the specific line drawing function
-                drawLines(ctx, width, height);
-            };
-
-            // 1. One Solution
-            drawSystemGraph('oneSolutionCanvas', (ctx, width, height) => {
-                ctx.lineWidth = 2;
-                // Line 1
-                ctx.beginPath();
-                ctx.moveTo(20, 20);
-                ctx.lineTo(width - 20, height - 20);
-                ctx.strokeStyle = '#3b82f6'; // Blue
-                ctx.stroke();
-
-                // Line 2
-                ctx.beginPath();
-                ctx.moveTo(20, height - 20);
-                ctx.lineTo(width - 20, 20);
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.stroke();
-            });
-
-            // 2. No Solution
-            drawSystemGraph('noSolutionCanvas', (ctx, width, height) => {
-                ctx.lineWidth = 2;
-                // Line 1
-                ctx.beginPath();
-                ctx.moveTo(20, 50);
-                ctx.lineTo(width - 20, 100);
-                ctx.strokeStyle = '#3b82f6'; // Blue
-                ctx.stroke();
-
-                // Line 2 (parallel)
-                ctx.beginPath();
-                ctx.moveTo(20, 80);
-                ctx.lineTo(width - 20, 130);
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.stroke();
-            });
-
-            // 3. Infinite Solutions
-            drawSystemGraph('infiniteSolutionCanvas', (ctx, width, height) => {
-                ctx.lineWidth = 3;
-                // Draw one line to represent both
-                ctx.beginPath();
-                ctx.moveTo(20, 20);
-                ctx.lineTo(width - 20, height - 20);
-                ctx.strokeStyle = '#8b5cf6'; // Violet
-                ctx.setLineDash([6, 6]);
-                ctx.stroke();
-                ctx.setLineDash([]);
-            });
-
-            // --- Linear-Quadratic System Graphs ---
-
-            const drawParabola = (ctx, originX, originY, a, k) => {
-                ctx.beginPath();
-                ctx.strokeStyle = '#9333ea'; // Purple
-                ctx.lineWidth = 2;
-                for (let x = -originX; x < originX; x += 2) {
-                    const y = a * x * x + k;
-                    ctx.lineTo(originX + x, originY - y);
-                }
-                ctx.stroke();
-            };
-
-            drawSystemGraph('lqTwoSolutionsCanvas', (ctx, width, height) => {
-                const originX = width / 2;
-                const originY = height - 20;
-                
-                // Draw Parabola y = 0.02x^2 + 20
-                drawParabola(ctx, originX, originY, 0.02, 20);
-
-                // Draw intersecting line
-                ctx.beginPath();
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.lineWidth = 2;
-                ctx.moveTo(0, originY - 80);
-                ctx.lineTo(width, originY - 60);
-                ctx.stroke();
-            });
-
-            drawSystemGraph('lqOneSolutionCanvas', (ctx, width, height) => {
-                const originX = width / 2;
-                const originY = height - 20;
-
-                // Draw Parabola y = 0.02x^2 + 40
-                drawParabola(ctx, originX, originY, 0.02, 40);
-
-                // Draw tangent line
-                ctx.beginPath();
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.lineWidth = 2;
-                ctx.moveTo(0, originY - 40);
-                ctx.lineTo(width, originY - 40);
-                ctx.stroke();
-            });
-
-            drawSystemGraph('lqNoSolutionsCanvas', (ctx, width, height) => {
-                const originX = width / 2;
-                const originY = height - 20;
-
-                // Draw Parabola y = 0.02x^2 + 80
-                drawParabola(ctx, originX, originY, 0.02, 80);
-
-                // Draw non-intersecting line
-                ctx.beginPath();
-                ctx.strokeStyle = '#ef4444'; // Red
-                ctx.lineWidth = 2;
-                ctx.moveTo(0, originY - 40);
-                ctx.lineTo(width, originY - 40);
-                ctx.stroke();
-            });
-        });
-    </script>
+    <script src="algebra.js"></script>
 </body>
 </html>
