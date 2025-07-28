@@ -103,10 +103,13 @@ figcaption {
 #table-of-contents ul a {
     font-weight: 500;
 }
-.sticky-toc {
+.sticky-top {
     position: -webkit-sticky; /* For Safari */
     position: sticky;
-    top: 1rem;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 .diagram-container {
     display: flex;
@@ -145,49 +148,48 @@ figcaption {
             </p>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <nav class="md:col-span-1 topic-card sticky-toc" id="table-of-contents">
-                <h2 class="section-title">Table of Contents</h2>
-                <ol class="list-decimal list-inside space-y-4 text-lg">
-                    <li>
-                        <a href="#algebraic-expressions" class="font-semibold text-purple-600 hover:underline">Algebraic Expressions</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
-                            <li><a href="#simplifying-polynomials" class="text-gray-700 hover:text-purple-600">Simplifying Polynomials and Exponents</a></li>
-                            <li><a href="#factoring-polynomials" class="text-gray-700 hover:text-purple-600">Factoring Polynomials</a></li>
-                            <li><a href="#rational-radical" class="text-gray-700 hover:text-purple-600">Rational and Radical Expressions</a></li>
-                            <li><a href="#remainder-factor-theorems" class="text-gray-700 hover:text-purple-600">Polynomial Remainder and Factor Theorems</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#solving-equations" class="font-semibold text-purple-600 hover:underline">Solving Equations and Inequalities</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
-                            <li><a href="#quadratic-equations" class="text-gray-700 hover:text-purple-600">Quadratic Equations</a></li>
-                            <li><a href="#solving-inequalities" class="text-gray-700 hover:text-purple-600">Solving Inequalities</a></li>
-                            <li><a href="#log-exp-equations" class="text-gray-700 hover:text-purple-600">Logarithmic and Exponential Equations</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#systems-of-equations" class="font-semibold text-purple-600 hover:underline">Systems of Equations and Inequalities</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
-                            <li><a href="#linear-systems" class="text-gray-700 hover:text-purple-600">Systems of Linear Equations</a></li>
-                            <li><a href="#linear-quadratic-systems" class="text-gray-700 hover:text-purple-600">Systems with Linear and Quadratic Equations</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#functions" class="font-semibold text-purple-600 hover:underline">Functions</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
-                            <li><a href="#function-notation" class="text-gray-700 hover:text-purple-600">Function Notation and Properties</a></li>
-                            <li><a href="#function-families" class="text-gray-700 hover:text-purple-600">Function Families and Their Graphs</a></li>
-                            <li><a href="#piecewise-functions" class="text-gray-700 hover:text-purple-600">Piecewise-Defined Functions</a></li>
-                            <li><a href="#function-transformations" class="text-gray-700 hover:text-purple-600">Function Transformations</a></li>
-                            <li><a href="#inverse-functions" class="text-gray-700 hover:text-purple-600">Inverse Functions</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#trigonometric-functions" class="font-semibold text-purple-600 hover:underline">Trigonometric Functions</a></li>
-                </ol>
-            </nav>
+        <nav class="topic-card sticky-top" id="table-of-contents">
+            <h2 class="section-title">Table of Contents</h2>
+            <ol class="list-decimal list-inside space-y-4 text-lg">
+                <li>
+                    <a href="#algebraic-expressions" class="font-semibold text-purple-600 hover:underline">Algebraic Expressions</a>
+                    <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <li><a href="#simplifying-polynomials" class="text-gray-700 hover:text-purple-600">Simplifying Polynomials and Exponents</a></li>
+                        <li><a href="#factoring-polynomials" class="text-gray-700 hover:text-purple-600">Factoring Polynomials</a></li>
+                        <li><a href="#rational-radical" class="text-gray-700 hover:text-purple-600">Rational and Radical Expressions</a></li>
+                        <li><a href="#remainder-factor-theorems" class="text-gray-700 hover:text-purple-600">Polynomial Remainder and Factor Theorems</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#solving-equations" class="font-semibold text-purple-600 hover:underline">Solving Equations and Inequalities</a>
+                    <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <li><a href="#quadratic-equations" class="text-gray-700 hover:text-purple-600">Quadratic Equations</a></li>
+                        <li><a href="#solving-inequalities" class="text-gray-700 hover:text-purple-600">Solving Inequalities</a></li>
+                        <li><a href="#log-exp-equations" class="text-gray-700 hover:text-purple-600">Logarithmic and Exponential Equations</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#systems-of-equations" class="font-semibold text-purple-600 hover:underline">Systems of Equations and Inequalities</a>
+                    <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <li><a href="#linear-systems" class="text-gray-700 hover:text-purple-600">Systems of Linear Equations</a></li>
+                        <li><a href="#linear-quadratic-systems" class="text-gray-700 hover:text-purple-600">Systems with Linear and Quadratic Equations</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#functions" class="font-semibold text-purple-600 hover:underline">Functions</a>
+                    <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <li><a href="#function-notation" class="text-gray-700 hover:text-purple-600">Function Notation and Properties</a></li>
+                        <li><a href="#function-families" class="text-gray-700 hover:text-purple-600">Function Families and Their Graphs</a></li>
+                        <li><a href="#piecewise-functions" class="text-gray-700 hover:text-purple-600">Piecewise-Defined Functions</a></li>
+                        <li><a href="#function-transformations" class="text-gray-700 hover:text-purple-600">Function Transformations</a></li>
+                        <li><a href="#inverse-functions" class="text-gray-700 hover:text-purple-600">Inverse Functions</a></li>
+                    </ul>
+                </li>
+                <li><a href="#trigonometric-functions" class="font-semibold text-purple-600 hover:underline">Trigonometric Functions</a></li>
+            </ol>
+        </nav>
 
-            <main class="md:col-span-3">
+        <main>
             <section id="algebraic-expressions" class="topic-card">
                 <h2 class="section-title">1. Algebraic Expressions</h2>
                 <p class="mb-4">
@@ -1233,9 +1235,14 @@ figcaption {
                     <div class="example-answer">The solutions are \(x = \frac{2\pi}{3}\) and \(x = \frac{4\pi}{3}\).</div>
                 </div>
             </section>
-            </main>
-        </div>
+        </main>
     </div>
+
+    <button id="back-to-top" class="hidden fixed bottom-8 right-8 bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
 
     <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1260,6 +1267,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
     const canvas = document.getElementById('unitCircleCanvas');
     if (canvas) {
