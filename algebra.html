@@ -111,6 +111,31 @@
             gap: 1rem;
             margin: 2rem 0;
         }
+        .sticky-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .main-content {
+            padding-top: 1rem;
+        }
+        .toggle-indicator {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        .chevron-down {
+            border-top: 5px solid #374151;
+        }
+        .chevron-up {
+            border-bottom: 5px solid #374151;
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -124,9 +149,9 @@
             </p>
         </header>
 
-        <main>
+        <main class="main-content">
 
-            <nav class="topic-card" id="table-of-contents">
+            <nav class="topic-card sticky-nav" id="table-of-contents">
                 <h2 class="section-title">Table of Contents</h2>
                 <ol class="list-decimal list-inside space-y-4 text-lg">
                     <li>
