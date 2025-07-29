@@ -6,100 +6,133 @@
     <title>EST II Math: In-Depth Guide to Algebra and Functions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
+    <script src="https://unpkg.com/math-expression-evaluator/dist/mexp.min.js"></script>
+    <script src="https://unpkg.com/algebra.js/dist/algebra.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1f2937;
+            background-color: #ffffff; /* White */
+            color: #212121; /* Dark Gray */
         }
         .topic-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            background-color: #ffffff; /* White */
+            border: 1px solid #b2dfdb; /* Light Teal */
+            border-radius: 1rem; /* Slightly larger radius */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             padding: 2.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
         }
         .section-title {
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: #9333ea; /* Fuchsia 600 */
-            border-bottom: 3px solid #f3e8ff; /* Fuchsia 100 */
-            padding-bottom: 0.75rem;
+            color: #00796b; /* Teal */
+            border-bottom: 4px solid #b2dfdb; /* Light Teal */
+            padding-bottom: 1rem;
         }
         .subsection-title {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #a855f7; /* Fuchsia 500 */
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            color: #9b59b6; /* Lighter Purple */
         }
         .tertiary-title {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #374151;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: #34495e;
         }
         .formula-box {
-            background-color: #f5f3ff; /* Violet 50 */
-            border-left: 4px solid #8b5cf6; /* Violet 500 */
-            padding: 1.25rem;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0.375rem;
+            background-color: #e0f2f1; /* Lighter Teal */
+            border-left: 5px solid #00796b; /* Teal */
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
             font-size: 1.1rem;
-            color: #5b21b6; /* Violet 800 */
-            line-height: 1.7;
+            color: #004d40; /* Dark Teal */
+            line-height: 1.8;
         }
         .example-box {
-            background-color: #f9fafb;
-            border: 1px solid #e5e7eb;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            border-radius: 0.5rem;
+            background-color: #ffffff; /* White */
+            border: 1px solid #b2dfdb; /* Light Teal */
+            padding: 2rem;
+            margin-top: 1.5rem;
+            border-radius: 0.75rem;
         }
         .example-title {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
+            font-weight: 700;
+            color: #7d3c98; /* Dark Purple */
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
         .example-step {
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            border-left: 2px solid #d1d5db;
+            margin-bottom: 1rem;
+            padding-left: 1.25rem;
+            border-left: 3px solid #95a5a6;
         }
         .example-answer {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #e8f5e9; /* Light Green */
+            border: 1px solid #c8e6c9; /* Lighter Green */
+            border-left: 5px solid #4caf50; /* Green */
             border-radius: 0.375rem;
-            font-weight: 500;
-            color: #166534;
+            font-weight: 600;
+            color: #1b5e20; /* Dark Green */
         }
         p {
-            line-height: 1.65;
+            line-height: 1.7;
+            margin-bottom: 1rem;
         }
         #unitCircleCanvas {
             display: block;
             margin: 1.5rem auto;
             border: 1px solid #e5e7eb;
             border-radius: 0.5rem;
-            background-color: #f9fafb;
+            background-color: #ffffff;
         }
         figcaption {
             text-align: center;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #4b5563;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #7f8c8d;
             margin-top: 0.75rem;
         }
+        #table-of-contents {
+            border-left: 5px solid #8e44ad;
+        }
         #table-of-contents a {
-            transition: color 0.2s;
+            transition: color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+        #table-of-contents a:hover {
+            color: #9b59b6;
+            transform: translateX(3px);
         }
         #table-of-contents ul a {
             font-weight: 500;
@@ -108,20 +141,221 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        .interactive-input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #bdc3c7;
+            font-size: 1rem;
+        }
+        .interactive-button {
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #009688; /* Teal */
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .interactive-button:hover {
+            background-color: #00796b; /* Darker Teal */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .interactive-button:hover {
+            background-color: #7d3c98;
+        }
+        .interactive-feedback {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        .quiz-question {
+            margin-bottom: 2rem;
+        }
+        .quiz-question p {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem;
+            background-color: #f8f9f9;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .quiz-options label:hover {
+            background-color: #e1e5e8;
+        }
+        .quiz-results {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #eafaf1;
+            border: 1px solid #58d68d;
+        }
+        .exercise {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .exercise-question {
+            font-weight: 600;
+        }
+        .exercise-solution {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-radius: 0.375rem;
+        }
+        .hint-button {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .hint {
+            background-color: #f9e79f;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #8e44ad;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        #back-to-top:hover {
+            background-color: #9b59b6;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #263238; /* Dark Blue Gray */
+            color: #eceff1; /* Light Blue Gray */
+        }
+        .dark-mode .topic-card {
+            background-color: #37474f; /* Lighter Blue Gray */
+            border-color: #455a64; /* Even Lighter Blue Gray */
+        }
+        .dark-mode .section-title {
+            color: #80cbc4; /* Light Teal */
+            border-bottom-color: #455a64; /* Even Lighter Blue Gray */
+        }
+        .dark-mode .subsection-title {
+            color: #4db6ac; /* Medium Teal */
+        }
+        .dark-mode .tertiary-title {
+            color: #eceff1; /* Light Blue Gray */
+        }
+        .dark-mode .formula-box {
+            background-color: #263238; /* Dark Blue Gray */
+            border-left-color: #80cbc4; /* Light Teal */
+            color: #eceff1; /* Light Blue Gray */
+        }
+        .dark-mode .example-box {
+            background-color: #37474f; /* Lighter Blue Gray */
+            border-color: #455a64; /* Even Lighter Blue Gray */
+        }
+        .dark-mode .example-title {
+            color: #80cbc4; /* Light Teal */
+        }
+        .dark-mode .example-answer {
+            background-color: #263238; /* Dark Blue Gray */
+            border-color: #a5d6a7; /* Light Green */
+            color: #a5d6a7; /* Light Green */
+        }
+        .dark-mode #table-of-contents {
+            border-left-color: #80cbc4; /* Light Teal */
+        }
+        .dark-mode a {
+            color: #80cbc4; /* Light Teal */
+        }
+        .dark-mode a:hover {
+            color: #4db6ac; /* Medium Teal */
+        }
+        .dark-mode #dark-mode-toggle {
+            background-color: #37474f; /* Lighter Blue Gray */
+            color: #eceff1; /* Light Blue Gray */
+            border-radius: 50%;
+        }
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background-color: #8e44ad;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.2s;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid #d2b4de;
+        }
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .generated-problem {
+            background-color: #e1f5fe; /* Light Blue */
+            border: 1px solid #b3e5fc; /* Lighter Blue */
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
         }
     </style>
 </head>
 <body class="text-gray-800">
 
+    <div id="progress-bar"></div>
+
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-purple-700">Algebra and Functions</h1>
-            <p class="mt-4 text-lg text-gray-600">
+        <header class="text-center mb-16 relative">
+            <h1 class="text-5xl md:text-6xl font-bold" style="color: #2c3e50;">Algebra and Functions</h1>
+            <p class="mt-4 text-xl" style="color: #7f8c8d;">
                 The most heavily weighted domain (32-42%) on the EST II Math Level 1 exam. This section covers algebraic manipulation, solving equations, and understanding the properties of various functions.
             </p>
+            <button id="dark-mode-toggle" class="absolute top-0 right-0 p-2">🌙</button>
+            <div id="score-display" class="absolute top-0 left-0 p-2">Score: 0</div>
         </header>
 
         <main>
@@ -130,8 +364,8 @@
                 <h2 class="section-title">Table of Contents</h2>
                 <ol class="list-decimal list-inside space-y-4 text-lg">
                     <li>
-                        <a href="#algebraic-expressions" class="font-semibold text-purple-600 hover:underline">Algebraic Expressions</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <a href="#algebraic-expressions" class="font-semibold text-purple-800 hover:underline">Algebraic Expressions</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-2 text-base">
                             <li><a href="#simplifying-polynomials" class="text-gray-700 hover:text-purple-600">Simplifying Polynomials and Exponents</a></li>
                             <li><a href="#factoring-polynomials" class="text-gray-700 hover:text-purple-600">Factoring Polynomials</a></li>
                             <li><a href="#rational-radical" class="text-gray-700 hover:text-purple-600">Rational and Radical Expressions</a></li>
@@ -139,23 +373,23 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#solving-equations" class="font-semibold text-purple-600 hover:underline">Solving Equations and Inequalities</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <a href="#solving-equations" class="font-semibold text-purple-800 hover:underline">Solving Equations and Inequalities</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-2 text-base">
                             <li><a href="#quadratic-equations" class="text-gray-700 hover:text-purple-600">Quadratic Equations</a></li>
                             <li><a href="#solving-inequalities" class="text-gray-700 hover:text-purple-600">Solving Inequalities</a></li>
                             <li><a href="#log-exp-equations" class="text-gray-700 hover:text-purple-600">Logarithmic and Exponential Equations</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#systems-of-equations" class="font-semibold text-purple-600 hover:underline">Systems of Equations and Inequalities</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <a href="#systems-of-equations" class="font-semibold text-purple-800 hover:underline">Systems of Equations and Inequalities</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-2 text-base">
                             <li><a href="#linear-systems" class="text-gray-700 hover:text-purple-600">Systems of Linear Equations</a></li>
                             <li><a href="#linear-quadratic-systems" class="text-gray-700 hover:text-purple-600">Systems with Linear and Quadratic Equations</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#functions" class="font-semibold text-purple-600 hover:underline">Functions</a>
-                        <ul class="list-disc list-inside mt-2 ml-5 space-y-1 text-base">
+                        <a href="#functions" class="font-semibold text-purple-800 hover:underline">Functions</a>
+                        <ul class="list-disc list-inside mt-2 ml-5 space-y-2 text-base">
                             <li><a href="#function-notation" class="text-gray-700 hover:text-purple-600">Function Notation and Properties</a></li>
                             <li><a href="#function-families" class="text-gray-700 hover:text-purple-600">Function Families and Their Graphs</a></li>
                             <li><a href="#piecewise-functions" class="text-gray-700 hover:text-purple-600">Piecewise-Defined Functions</a></li>
@@ -163,18 +397,18 @@
                             <li><a href="#inverse-functions" class="text-gray-700 hover:text-purple-600">Inverse Functions</a></li>
                         </ul>
                     </li>
-                    <li><a href="#trigonometric-functions" class="font-semibold text-purple-600 hover:underline">Trigonometric Functions</a></li>
+                    <li><a href="#trigonometric-functions" class="font-semibold text-purple-800 hover:underline">Trigonometric Functions</a></li>
                 </ol>
             </nav>
 
-            <section id="algebraic-expressions" class="topic-card">
-                <h2 class="section-title">1. Algebraic Expressions</h2>
-                <p class="mb-4">
+            <section id="algebraic-expressions" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-calculator"></i> 1. Algebraic Expressions</h2>
+                <p>
                     This foundational part of algebra deals with manipulating expressions that contain variables, constants, and operational symbols. Mastery of these techniques is essential for solving equations and working with functions.
                 </p>
 
                 <h3 id="simplifying-polynomials" class="subsection-title">Simplifying Polynomials and Exponents</h3>
-                <p class="mb-4">
+                <p>
                     Simplifying polynomials involves combining like terms (terms with the same variables raised to the same powers) and applying the rules of exponents.
                 </p>
                 <div class="formula-box">
@@ -186,15 +420,21 @@
                     \(x^{-a} = \frac{1}{x^a}\)<br>
                     \(x^{a/b} = \sqrt[b]{x^a}\)
                 </div>
-                <div class="example-box">
-                    <p class="example-title">Example 1: Simplify \( (3x^2y - 2xy^2 + 5) - (xy^2 - 2x^2y + 3) \).</p>
-                    <div class="example-step"><strong>Step 1:</strong> Distribute the negative sign:
-                    \[3x^2y - 2xy^2 + 5 - xy^2 + 2x^2y - 3\]</div>
-                    <div class="example-step"><strong>Step 2:</strong> Group like terms:
-                    \[(3x^2y + 2x^2y) + (-2xy^2 - xy^2) + (5 - 3)\]</div>
-                    <div class="example-step"><strong>Step 3:</strong> Combine like terms:
-                    \[5x^2y - 3xy^2 + 2\]</div>
-                    <div class="example-answer">The simplified expression is \(5x^2y - 3xy^2 + 2\).</div>
+                <div class="example-box interactive-example">
+                    <p class="example-title">Interactive Example 1: Simplify \( (3x^2y - 2xy^2 + 5) - (xy^2 - 2x^2y + 3) \).</p>
+                    <div class="example-step">
+                        <strong>Your turn!</strong> Enter the simplified expression in the box below.
+                        <input type="text" id="interactive-input-1" class="interactive-input" placeholder="e.g., 2x^2 + 3y">
+                        <button onclick="checkAnswer1()" class="interactive-button">Check Answer</button>
+                        <p id="interactive-feedback-1" class="interactive-feedback"></p>
+                    </div>
+                    <div class="example-answer" id="interactive-solution-1" style="display: none;">
+                        <strong>Solution Walkthrough:</strong><br>
+                        <strong>Step 1:</strong> Distribute the negative sign: \(3x^2y - 2xy^2 + 5 - xy^2 + 2x^2y - 3\)<br>
+                        <strong>Step 2:</strong> Group like terms: \((3x^2y + 2x^2y) + (-2xy^2 - xy^2) + (5 - 3)\)<br>
+                        <strong>Step 3:</strong> Combine like terms: \(5x^2y - 3xy^2 + 2\)<br>
+                        The simplified expression is \(5x^2y - 3xy^2 + 2\).
+                    </div>
                 </div>
                 <div class="example-box">
                     <p class="example-title">Example 2: Simplify \( \frac{(2x^3y^2)^3}{4x^4y^8} \).</p>
@@ -220,7 +460,7 @@
                 </div>
                 
                 <h3 id="factoring-polynomials" class="subsection-title">Factoring Polynomials</h3>
-                <p class="mb-4">
+                <p>
                     Factoring is the process of breaking down a polynomial into a product of simpler polynomials. This is a critical skill for solving equations and analyzing functions.
                 </p>
                 <div class="formula-box">
@@ -276,7 +516,7 @@
                 </div>
 
                 <h3 id="rational-radical" class="subsection-title">Rational and Radical Expressions</h3>
-                <p class="mb-4">
+                <p>
                     These involve fractions with polynomials (rational) or expressions with roots (radical). Simplifying them often requires factoring and applying exponent rules.
                 </p>
                 <div class="example-box">
@@ -326,7 +566,7 @@
                 </div>
 
                 <h3 id="remainder-factor-theorems" class="subsection-title">Polynomial Remainder and Factor Theorems</h3>
-                <p class="mb-4">
+                <p>
                     These theorems provide a quick way to find the remainder of a polynomial division and to determine if a binomial is a factor of a polynomial, which is very useful for finding roots.
                 </p>
                 <div class="formula-box">
@@ -378,14 +618,23 @@
                 </div>
             </section>
 
-            <section id="solving-equations" class="topic-card">
-                <h2 class="section-title">2. Solving Equations and Inequalities</h2>
-                <p class="mb-4">
+            <section id="quiz-1" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Quick Quiz: Algebraic Expressions</h2>
+                <div id="quiz-container-1">
+                    <!-- Questions will be injected here by JavaScript -->
+                </div>
+                <button id="submit-quiz-1" class="interactive-button">Submit Quiz</button>
+                <div id="quiz-results-1" class="quiz-results" style="display:none;"></div>
+            </section>
+
+            <section id="solving-equations" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-equals"></i> 2. Solving Equations and Inequalities</h2>
+                <p>
                     This section covers the methods for finding the values of variables that make equations or inequalities true.
                 </p>
 
                 <h3 id="quadratic-equations" class="subsection-title">Quadratic Equations</h3>
-                <p class="mb-4">
+                <p>
                     Quadratic equations (\(ax^2 + bx + c = 0\)) can be solved by factoring, completing the square, or the quadratic formula.
                 </p>
                 <div class="formula-box">
@@ -429,7 +678,7 @@
                 </div>
 
                 <h3 id="solving-inequalities" class="subsection-title">Solving Inequalities</h3>
-                <p class="mb-4">
+                <p>
                     Solving inequalities is similar to solving equations, with one key difference: when you multiply or divide both sides by a negative number, you must reverse the inequality sign.
                 </p>
                 <div class="example-box">
@@ -526,27 +775,27 @@
                 </div>
             </section>
 
-            <section id="systems-of-equations" class="topic-card">
-                <h2 class="section-title">3. Systems of Equations and Inequalities</h2>
-                <p class="mb-4">
+            <section id="systems-of-equations" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> 3. Systems of Equations and Inequalities</h2>
+                <p>
                     A system of equations is a set of two or more equations that share variables. Solving a system means finding the values for the variables that make all equations in the system true simultaneously. This often represents the point(s) of intersection between the graphs of the equations.
                 </p>
 
                 <h3 id="linear-systems" class="subsection-title">Systems of Linear Equations</h3>
-                <p class="mb-4">
+                <p>
                     These systems can be solved using methods like substitution or elimination.
                 </p>
                 <div class="diagram-container">
                     <figure>
-                        <canvas id="oneSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="oneSolutionChart" width="200" height="150"></canvas>
                         <figcaption>One Solution (Intersecting Lines)</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="noSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="noSolutionChart" width="200" height="150"></canvas>
                         <figcaption>No Solution (Parallel Lines)</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="infiniteSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="infiniteSolutionChart" width="200" height="150"></canvas>
                         <figcaption>Infinite Solutions (Same Line)</figcaption>
                     </figure>
                 </div>
@@ -640,20 +889,20 @@
                 </div>
 
                 <h3 id="linear-quadratic-systems" class="subsection-title">Systems with Linear and Quadratic Equations</h3>
-                <p class="mb-4">
+                <p>
                     Typically solved using substitution, these systems can have zero, one, or two solutions, representing the points of intersection between a line and a parabola.
                 </p>
                 <div class="diagram-container">
                     <figure>
-                        <canvas id="lqTwoSolutionsCanvas" width="250" height="200"></canvas>
+                        <canvas id="lqTwoSolutionsCanvas" width="200" height="150"></canvas>
                         <figcaption>Two Solutions</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="lqOneSolutionCanvas" width="250" height="200"></canvas>
+                        <canvas id="lqOneSolutionCanvas" width="200" height="150"></canvas>
                         <figcaption>One Solution (Tangent)</figcaption>
                     </figure>
                     <figure>
-                        <canvas id="lqNoSolutionsCanvas" width="250" height="200"></canvas>
+                        <canvas id="lqNoSolutionsCanvas" width="200" height="150"></canvas>
                         <figcaption>No Real Solutions</figcaption>
                     </figure>
                 </div>
@@ -755,14 +1004,14 @@
                 </div>
             </section>
 
-            <section id="functions" class="topic-card">
-                <h2 class="section-title">4. Functions</h2>
-                <p class="mb-4">
+            <section id="functions" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-wave-square"></i> 4. Functions</h2>
+                <p>
                     A function is a rule that assigns each input value to exactly one output value. The EST requires a broad understanding of different function families, their properties, and their graphs.
                 </p>
 
                 <h3 id="function-notation" class="subsection-title">Function Notation and Properties</h3>
-                <p class="mb-4">
+                <p>
                     Functions are typically denoted by \(f(x)\). Key properties include domain (the set of all possible input values) and range (the set of all possible output values).
                 </p>
                 <div class="example-box">
@@ -799,7 +1048,7 @@
                 </div>
 
                 <h3 id="function-families" class="subsection-title">Function Families and Their Graphs</h3>
-                <p class="mb-4">
+                <p>
                     Recognizing the parent function and its properties is key to solving many problems on the exam.
                 </p>
                 <div class="formula-box">
@@ -843,7 +1092,7 @@
                 </div>
 
                 <h3 id="piecewise-functions" class="subsection-title">Piecewise-Defined Functions</h3>
-                <p class="mb-4">
+                <p>
                     A piecewise function is defined by multiple sub-functions, each of which applies to a different interval in the domain.
                 </p>
                 <div class="example-box">
@@ -965,7 +1214,7 @@
                 </div>
 
                 <h3 id="function-transformations" class="subsection-title">Function Transformations</h3>
-                <p class="mb-4">
+                <p>
                     Transformations alter the graph of a parent function \(f(x)\) in predictable ways.
                 </p>
                 <div class="formula-box">
@@ -1005,7 +1254,7 @@
                 </div>
 
                 <h3 id="inverse-functions" class="subsection-title">Inverse Functions</h3>
-                <p class="mb-4">
+                <p>
                     An inverse function, denoted \(f^{-1}(x)\), "reverses" the action of the original function \(f(x)\). If \(f(a)=b\), then \(f^{-1}(b)=a\). The graph of an inverse function is a reflection of the original function's graph over the line \(y=x\).
                 </p>
                 <div class="example-box">
@@ -1044,14 +1293,14 @@
                 </div>
             </section>
 
-            <section id="trigonometric-functions" class="topic-card">
-                <h2 class="section-title">5. Trigonometric Functions</h2>
-                <p class="mb-4">
+            <section id="trigonometric-functions" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-chart-pie"></i> 5. Trigonometric Functions</h2>
+                <p>
                     Trigonometric functions relate the angles of a triangle to the lengths of its sides. On the EST, they are often defined using the unit circle.
                 </p>
 
                 <h3 class="subsection-title">The Unit Circle</h3>
-                <p class="mb-4">
+                <p>
                     The unit circle is a circle with a radius of 1 centered at the origin. For any angle \(\theta\), the point \((x, y)\) where the angle's terminal side intersects the circle gives the values for cosine and sine.
                 </p>
                 <canvas id="unitCircleCanvas" width="300" height="300"></canvas>
@@ -1078,7 +1327,7 @@
                 </div>
 
                 <h3 class="subsection-title">Graphs of Trigonometric Functions</h3>
-                <p class="mb-4">
+                <p>
                     The graphs of sine and cosine functions are periodic waves. Understanding their key properties, such as amplitude and period, is crucial for analyzing them.
                 </p>
                 <div class="formula-box">
@@ -1137,7 +1386,7 @@
                 </div>
 
                 <h3 class="subsection-title">Solving Trigonometric Equations</h3>
-                <p class="mb-4">
+                <p>
                     This involves finding the angle(s) that satisfy a given trigonometric equation, usually within a specified interval like \([0, 2\pi]\).
                 </p>
                 <div class="example-box">
@@ -1213,11 +1462,119 @@
                 </div>
             </section>
 
+            <section id="practice-exercises" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-pencil-alt"></i> Practice Exercises</h2>
+                <div class="exercise">
+                    <p class="exercise-question">1. Simplify the expression: \( (4a^2 - 2ab + b^2) + (a^2 - b^2) \)</p>
+                    <button class="hint-button" data-hint="hint-1">Hint</button>
+                    <p id="hint-1" class="hint" style="display:none;">Remember to combine like terms.</p>
+                    <div class="exercise-solution" style="display:none;">
+                        <p><strong>Step 1:</strong> Remove the parentheses. Since we are adding the polynomials, the signs do not change.</p>
+                        <p>\(4a^2 - 2ab + b^2 + a^2 - b^2\)</p>
+                        <p><strong>Step 2:</strong> Group like terms.</p>
+                        <p>\((4a^2 + a^2) - 2ab + (b^2 - b^2)\)</p>
+                        <p><strong>Step 3:</strong> Combine like terms.</p>
+                        <p><strong>Solution:</strong> \(5a^2 - 2ab\)</p>
+                    </div>
+                </div>
+                <div class="exercise">
+                    <p class="exercise-question">2. Factor completely: \( 2x^3 - 18x \)</p>
+                    <button class="hint-button" data-hint="hint-2">Hint</button>
+                    <p id="hint-2" class="hint" style="display:none;">First, factor out the greatest common factor.</p>
+                    <div class="exercise-solution" style="display:none;">
+                        <p><strong>Step 1:</strong> Find the greatest common factor (GCF). The GCF of \(2x^3\) and \(18x\) is \(2x\).</p>
+                        <p>\(2x(x^2 - 9)\)</p>
+                        <p><strong>Step 2:</strong> Recognize the expression in the parentheses, \(x^2 - 9\), as a difference of squares, \(a^2 - b^2\).</p>
+                        <p><strong>Step 3:</strong> Factor the difference of squares using the formula \((a-b)(a+b)\).</p>
+                        <p>\(x^2 - 9 = (x-3)(x+3)\)</p>
+                        <p><strong>Step 4:</strong> Combine the factors.</p>
+                        <p><strong>Solution:</strong> \(2x(x-3)(x+3)\)</p>
+                    </div>
+                </div>
+                <div class="exercise">
+                    <p class="exercise-question">3. Solve for x: \( x^2 - 5x = 6 \)</p>
+                    <button class="hint-button" data-hint="hint-3">Hint</button>
+                    <p id="hint-3" class="hint" style="display:none;">First, set the equation to zero.</p>
+                    <div class="exercise-solution" style="display:none;">
+                        <p><strong>Step 1:</strong> Set the equation to zero by subtracting 6 from both sides.</p>
+                        <p>\(x^2 - 5x - 6 = 0\)</p>
+                        <p><strong>Step 2:</strong> Factor the quadratic trinomial. Find two numbers that multiply to -6 and add to -5. The numbers are -6 and 1.</p>
+                        <p>\((x-6)(x+1) = 0\)</p>
+                        <p><strong>Step 3:</strong> Set each factor to zero and solve for x.</p>
+                        <p>\(x-6=0 \implies x=6\)</p>
+                        <p>\(x+1=0 \implies x=-1\)</p>
+                        <p><strong>Solution:</strong> \(x=6, x=-1\)</p>
+                    </div>
+                </div>
+                <button id="toggle-solutions" class="interactive-button">Show/Hide Solutions</button>
+                <button id="generate-problem" class="interactive-button">Generate New Problem</button>
+            </section>
+
+            <section id="additional-resources" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> Additional Resources</h2>
+                <ul>
+                    <li><a href="https://www.khanacademy.org/math/algebra" target="_blank">Khan Academy - Algebra</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PL0o_zxa4K1BWKL_6B_1G529vI-ngnE3bA" target="_blank">Professor Leonard - Algebra Playlist</a></li>
+                    <li><a href="https://www.desmos.com/calculator" target="_blank">Desmos Graphing Calculator</a></li>
+                </ul>
+            </section>
+
+            <section id="faq" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> Frequently Asked Questions (FAQ)</h2>
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the difference between an expression and an equation?</h3>
+                    <p class="faq-answer">An expression is a combination of numbers, variables, and operators, but it does not have an equal sign. An equation, on the other hand, is a statement that two expressions are equal.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Why do I need to check for extraneous solutions?</h3>
+                    <p class="faq-answer">Extraneous solutions can arise when you perform operations that are not always reversible, such as squaring both sides of an equation. These solutions do not satisfy the original equation, so it's important to check them.</p>
+                </div>
+            </section>
+
+
+            <section id="equation-solver" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-magic"></i> Equation Solver</h2>
+                <input type="text" id="equation-input" class="interactive-input" placeholder="e.g., 2x + 4 = 10">
+                <button id="solve-equation" class="interactive-button">Solve</button>
+                <div id="equation-solution" class="exercise-solution" style="display:none;"></div>
+            </section>
+
+            <section id="weekly-challenge" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-trophy"></i> Weekly Challenge</h2>
+                <div id="challenge-container"></div>
+                <button class="hint-button" data-hint="challenge-hint">Hint</button>
+                <p id="challenge-hint" class="hint" style="display:none;">Isolate one of the square roots and then square both sides.</p>
+                <div class="exercise-solution" style="display:none;">
+                    <p><strong>Solution:</strong> \\(x = -1\\)</p>
+                </div>
+            </section>
+
         </main>
 
     </div>
 
+    <button id="back-to-top" title="Go to top">Top</button>
+
     <script>
+        function checkAnswer1() {
+            const correctAnswer = "5x^2y - 3xy^2 + 2";
+            const userInput = document.getElementById('interactive-input-1').value.trim();
+            const feedback = document.getElementById('interactive-feedback-1');
+            const solution = document.getElementById('interactive-solution-1');
+
+            // A simple way to check for correctness, ignoring spaces.
+            // For a real application, a more robust parsing method would be needed.
+            if (userInput.replace(/\s/g, '') === correctAnswer.replace(/\s/g, '')) {
+                feedback.textContent = "Correct! Well done.";
+                feedback.style.color = "#16a085";
+                solution.style.display = 'block';
+            } else {
+                feedback.textContent = "Not quite. Try again, or click 'Check Answer' to see the solution.";
+                feedback.style.color = "#c0392b";
+                solution.style.display = 'block';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const canvas = document.getElementById('unitCircleCanvas');
             if (canvas) {
@@ -1506,6 +1863,239 @@
                 ctx.fillText('Shift Up 4', toCanvasX(-3) + 8, toCanvasY(2));
             }
 
+
+
+            // --- Quiz Logic ---
+            const quiz1Data = [
+                {
+                    question: "What is the simplified form of \\((2x^2y)^3\\)?",
+                    options: ["\\(6x^5y^3\\)", "\\(8x^6y^3\\)", "\\(2x^6y^3\\)", "\\(8x^5y^3\\)"],
+                    answer: "\\(8x^6y^3\\)",
+                    solution: "Apply the power rule: \\((2x^2y)^3 = 2^3(x^2)^3y^3 = 8x^6y^3\\)."
+                },
+                {
+                    question: "What is the factored form of \\(x^2 - 9\\)?",
+                    options: ["\\((x-3)(x-3)\\)", "\\((x+3)(x+3)\\)", "\\((x-3)(x+3)\\)", "\\(x(x-9)\\)"],
+                    answer: "\\((x-3)(x+3)\\)",
+                    solution: "This is a difference of squares, \\(a^2 - b^2 = (a-b)(a+b)\\). Here, \\(a=x\\) and \\(b=3\\)."
+                },
+                {
+                    question: "What is the remainder when \\(x^3 - 1\\) is divided by \\(x-1\\)?",
+                    options: ["\\(0\\)", "\\(1\\)", "\\(-1\\)", "\\(2\\)"],
+                    answer: "\\(0\\)",
+                    solution: "By the Remainder Theorem, the remainder is \\(P(1) = (1)^3 - 1 = 1 - 1 = 0\\)."
+                }
+            ];
+
+            function loadQuiz(quizData, containerId, resultsId, submitId) {
+                const quizContainer = document.getElementById(containerId);
+                quizData.forEach((q, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'quiz-question';
+                    
+                    const questionP = document.createElement('p');
+                    questionP.innerHTML = `Q${index + 1}: ${q.question}`;
+                    questionDiv.appendChild(questionP);
+
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.className = 'quiz-options';
+                    q.options.forEach(option => {
+                        const label = document.createElement('label');
+                        label.innerHTML = `<input type="radio" name="question${index}" value="${option}"> ${option}`;
+                        optionsDiv.appendChild(label);
+                    });
+                    questionDiv.appendChild(optionsDiv);
+                    quizContainer.appendChild(questionDiv);
+                });
+
+                MathJax.typesetPromise();
+
+                document.getElementById(submitId).addEventListener('click', () => {
+                    let score = 0;
+                    let resultsHTML = '<h3>Quiz Results</h3>';
+                    quizData.forEach((q, index) => {
+                        const selected = document.querySelector(`input[name="question${index}"]:checked`);
+                        resultsHTML += `<p><b>Question ${index + 1}:</b> ${q.question}</p>`;
+                        if (selected) {
+                            if (selected.value === q.answer) {
+                                score++;
+                                resultsHTML += `<p style="color: #16a085;">Your answer: ${selected.value} (Correct)</p>`;
+                            } else {
+                                resultsHTML += `<p style="color: #c0392b;">Your answer: ${selected.value} (Incorrect)</p>`;
+                                resultsHTML += `<p><b>Correct answer:</b> ${q.answer}</p>`;
+                            }
+                        } else {
+                            resultsHTML += `<p>You did not answer this question.</p>`;
+                            resultsHTML += `<p><b>Correct answer:</b> ${q.answer}</p>`;
+                        }
+                        resultsHTML += `<p><i>Solution:</i> ${q.solution}</p>`;
+                        resultsHTML += '<hr>';
+                    });
+                    resultsHTML += `<h4>Your final score is ${score} out of ${quizData.length}.</h4>`;
+                    const resultsContainer = document.getElementById(resultsId);
+                    resultsContainer.innerHTML = resultsHTML;
+                    resultsContainer.style.display = 'block';
+
+                    const scoreDisplay = document.getElementById('score-display');
+                    let currentScore = parseInt(scoreDisplay.textContent.split(': ')[1]);
+                    currentScore += score * 10; // Add 10 points for each correct answer
+                    scoreDisplay.textContent = `Score: ${currentScore}`;
+
+                    MathJax.typesetPromise();
+                });
+            }
+
+            loadQuiz(quiz1Data, 'quiz-container-1', 'quiz-results-1', 'submit-quiz-1');
+
+            document.getElementById('toggle-solutions').addEventListener('click', () => {
+                const solutions = document.querySelectorAll('.exercise-solution');
+                solutions.forEach(solution => {
+                    solution.style.display = solution.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+
+            const hintButtons = document.querySelectorAll('.hint-button');
+            hintButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const hintId = button.getAttribute('data-hint');
+                    const hint = document.getElementById(hintId);
+                    hint.style.display = hint.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const generateProblemButton = document.getElementById('generate-problem');
+            const practiceExercisesSection = document.getElementById('practice-exercises');
+            let generatedProblemCount = 0;
+            generateProblemButton.addEventListener('click', () => {
+                if (generatedProblemCount >= 5) {
+                    const generatedProblems = document.querySelectorAll('.generated-problem');
+                    generatedProblems.forEach(problem => problem.remove());
+                    generatedProblemCount = 0;
+                }
+
+                const problemTypes = ['simplify', 'factor', 'solve_linear', 'solve_quadratic'];
+                const problemType = problemTypes[Math.floor(Math.random() * problemTypes.length)];
+                let problem = '';
+                let solution = '';
+
+                if (problemType === 'simplify') {
+                    const num1 = Math.floor(Math.random() * 10) + 1;
+                    const num2 = Math.floor(Math.random() * 10) + 1;
+                    const num3 = Math.floor(Math.random() * 10) + 1;
+                    const num4 = Math.floor(Math.random() * 10) + 1;
+                    problem = `Simplify the expression: \\((${num1}x^2 + ${num2}y) + (${num3}x^2 - ${num4}y)\\)`;
+                    solution = `\\(${(num1 + num3)}x^2 + ${(num2 - num4)}y\\)`;
+                } else if (problemType === 'factor') {
+                    const num = Math.floor(Math.random() * 10) + 1;
+                    problem = `Factor completely: \\(x^2 - ${num * num}\\)`;
+                    solution = `\\((x - ${num})(x + ${num})\\)`;
+                } else if (problemType === 'solve_linear') {
+                    const num1 = Math.floor(Math.random() * 10) + 1;
+                    const num2 = Math.floor(Math.random() * 10) + 1;
+                    problem = `Solve for x: \\(${num1}x - ${num2} = 0\\)`;
+                    solution = `\\(x = ${num2 / num1}\\)`;
+                } else { // solve_quadratic
+                    const num1 = Math.floor(Math.random() * 5) + 1;
+                    const num2 = Math.floor(Math.random() * 5) + 1;
+                    problem = `Solve for x: \\(x^2 - ${num1 + num2}x + ${num1 * num2} = 0\\)`;
+                    solution = `\\(x = ${num1}, x = ${num2}\\)`;
+                }
+
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise generated-problem';
+                exerciseDiv.innerHTML = `
+                    <p class="exercise-question">${problem}</p>
+                    <div class="exercise-solution" style="display:none;">
+                        <p><strong>Solution:</strong> ${solution}</p>
+                    </div>
+                `;
+                practiceExercisesSection.appendChild(exerciseDiv);
+                generatedProblemCount++;
+                MathJax.typesetPromise();
+            });
+
+            const solveEquationButton = document.getElementById('solve-equation');
+            const equationInput = document.getElementById('equation-input');
+            const equationSolution = document.getElementById('equation-solution');
+
+            solveEquationButton.addEventListener('click', () => {
+                const expr = equationInput.value.trim();
+                if (!expr) {
+                    equationSolution.innerHTML = `<p style="color: #c0392b;">Please enter an equation to solve.</p>`;
+                    equationSolution.style.display = 'block';
+                    return;
+                }
+                try {
+                    const eq = new algebra.Equation(expr);
+                    const solution = eq.solveFor("x");
+                    equationSolution.innerHTML = `<p><strong>Solution:</strong> \\(x = ${solution}\\)</p>`;
+                    equationSolution.style.display = 'block';
+                    MathJax.typesetPromise();
+                } catch (e) {
+                    equationSolution.innerHTML = `<p style="color: #c0392b;">Error: Could not solve the equation. Please check the syntax.</p>`;
+                    equationSolution.style.display = 'block';
+                }
+            });
+
+            // Dark mode toggle logic
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    darkModeToggle.textContent = '☀️';
+                } else {
+                    darkModeToggle.textContent = '🌙';
+                }
+            });
+
+            // Progress bar logic
+            const progressBar = document.getElementById('progress-bar');
+            const updateProgressBar = () => {
+                const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / scrollTotal) * 100;
+                progressBar.style.width = `${scrolled}%`;
+            };
+
+            // Back to top button logic
+            const backToTopButton = document.getElementById("back-to-top");
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    backToTopButton.style.display = "block";
+                } else {
+                    backToTopButton.style.display = "none";
+                }
+                updateProgressBar();
+            };
+            backToTopButton.addEventListener('click', () => {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            });
+
+        const challengeContainer = document.getElementById('challenge-container');
+        const challengeP = document.createElement('p');
+        challengeP.textContent = "Solve for x: \\(\\sqrt{x+2} + \\sqrt{3x+4} = 2\\)";
+        challengeContainer.appendChild(challengeP);
+        MathJax.typesetPromise();
+
+
             // --- Systems of Equations Graphs ---
             const drawSystemGraph = (canvasId, drawLines) => {
                 const canvas = document.getElementById(canvasId);
@@ -1515,7 +2105,7 @@
                 const height = canvas.height;
 
                 // Clear canvas and set background
-                ctx.fillStyle = '#f9fafb';
+                ctx.fillStyle = '#e0f7fa'; // Light Cyan
                 ctx.fillRect(0, 0, width, height);
 
                 // Draw axes
@@ -1524,7 +2114,7 @@
                 ctx.lineTo(width, height / 2); // X-axis
                 ctx.moveTo(width / 2, 0);
                 ctx.lineTo(width / 2, height); // Y-axis
-                ctx.strokeStyle = '#e5e7eb'; // Gray-200
+                ctx.strokeStyle = '#bdbdbd'; // Medium gray for axes
                 ctx.stroke();
 
                 // Call the specific line drawing function
@@ -1532,59 +2122,60 @@
             };
 
             // 1. One Solution
-            drawSystemGraph('oneSolutionCanvas', (ctx, width, height) => {
+            drawSystemGraph('oneSolutionChart', (ctx, width, height) => {
                 ctx.lineWidth = 2;
                 // Line 1
                 ctx.beginPath();
                 ctx.moveTo(20, 20);
                 ctx.lineTo(width - 20, height - 20);
-                ctx.strokeStyle = '#3b82f6'; // Blue
+                ctx.strokeStyle = '#00bcd4'; // Cyan
                 ctx.stroke();
 
                 // Line 2
                 ctx.beginPath();
                 ctx.moveTo(20, height - 20);
                 ctx.lineTo(width - 20, 20);
-                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.strokeStyle = '#ff9800'; // Orange
                 ctx.stroke();
             });
 
             // 2. No Solution
-            drawSystemGraph('noSolutionCanvas', (ctx, width, height) => {
+            drawSystemGraph('noSolutionChart', (ctx, width, height) => {
                 ctx.lineWidth = 2;
                 // Line 1
                 ctx.beginPath();
                 ctx.moveTo(20, 50);
                 ctx.lineTo(width - 20, 100);
-                ctx.strokeStyle = '#3b82f6'; // Blue
+                ctx.strokeStyle = '#00bcd4'; // Cyan
                 ctx.stroke();
 
                 // Line 2 (parallel)
                 ctx.beginPath();
                 ctx.moveTo(20, 80);
                 ctx.lineTo(width - 20, 130);
-                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.strokeStyle = '#ff9800'; // Orange
                 ctx.stroke();
             });
 
             // 3. Infinite Solutions
-            drawSystemGraph('infiniteSolutionCanvas', (ctx, width, height) => {
+            drawSystemGraph('infiniteSolutionChart', (ctx, width, height) => {
                 ctx.lineWidth = 3;
                 // Draw one line to represent both
                 ctx.beginPath();
                 ctx.moveTo(20, 20);
                 ctx.lineTo(width - 20, height - 20);
-                ctx.strokeStyle = '#8b5cf6'; // Violet
+                ctx.strokeStyle = '#00bcd4'; // Cyan
                 ctx.setLineDash([6, 6]);
                 ctx.stroke();
                 ctx.setLineDash([]);
             });
 
+
             // --- Linear-Quadratic System Graphs ---
 
             const drawParabola = (ctx, originX, originY, a, k) => {
                 ctx.beginPath();
-                ctx.strokeStyle = '#9333ea'; // Purple
+                ctx.strokeStyle = '#ff9800'; // Orange
                 ctx.lineWidth = 2;
                 for (let x = -originX; x < originX; x += 2) {
                     const y = a * x * x + k;
@@ -1597,12 +2188,10 @@
                 const originX = width / 2;
                 const originY = height - 20;
                 
-                // Draw Parabola y = 0.02x^2 + 20
                 drawParabola(ctx, originX, originY, 0.02, 20);
 
-                // Draw intersecting line
                 ctx.beginPath();
-                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.strokeStyle = '#00bcd4'; // Cyan
                 ctx.lineWidth = 2;
                 ctx.moveTo(0, originY - 80);
                 ctx.lineTo(width, originY - 60);
@@ -1613,12 +2202,10 @@
                 const originX = width / 2;
                 const originY = height - 20;
 
-                // Draw Parabola y = 0.02x^2 + 40
                 drawParabola(ctx, originX, originY, 0.02, 40);
 
-                // Draw tangent line
                 ctx.beginPath();
-                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.strokeStyle = '#00bcd4'; // Cyan
                 ctx.lineWidth = 2;
                 ctx.moveTo(0, originY - 40);
                 ctx.lineTo(width, originY - 40);
@@ -1629,12 +2216,10 @@
                 const originX = width / 2;
                 const originY = height - 20;
 
-                // Draw Parabola y = 0.02x^2 + 80
                 drawParabola(ctx, originX, originY, 0.02, 80);
 
-                // Draw non-intersecting line
                 ctx.beginPath();
-                ctx.strokeStyle = '#ef4444'; // Red
+                ctx.strokeStyle = '#00bcd4'; // Cyan
                 ctx.lineWidth = 2;
                 ctx.moveTo(0, originY - 40);
                 ctx.lineTo(width, originY - 40);
