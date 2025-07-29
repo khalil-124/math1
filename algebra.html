@@ -2044,7 +2044,8 @@
                     return;
                 }
                 try {
-                    const solution = algebra.parse(expr).solveFor("x");
+                    const eq = algebra.parse(expr);
+                    const solution = eq.solveFor("x");
                     equationSolution.innerHTML = `<p><strong>Solution:</strong> \\(x = ${solution}\\)</p>`;
                     equationSolution.style.display = 'block';
                     MathJax.typesetPromise();
