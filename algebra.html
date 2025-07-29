@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EST II Math: In-Depth Guide to Algebra and Functions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script>
         MathJax = {
             chtml: {
@@ -30,8 +32,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* White */
-            color: #212121; /* Dark Gray */
+            background-color: #f7fafc;
+            color: #2d3748;
         }
         .topic-card {
             background-color: #ffffff; /* White */
@@ -43,7 +45,8 @@
             transition: transform 0.2s ease-in-out;
         }
         .topic-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .section-title {
             font-size: 2.25rem;
@@ -163,12 +166,16 @@
             transition: all 0.3s ease;
         }
         .interactive-button:hover {
-            background-color: #00796b; /* Darker Teal */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
         .interactive-button:hover {
-            background-color: #7d3c98;
+            background-color: #00796b; /* Darker Teal */
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .interactive-button:active {
+            transform: translateY(0) scale(1);
+            box-shadow: none;
         }
         .interactive-feedback {
             margin-top: 1rem;
@@ -203,7 +210,7 @@
         .exercise {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid #ecf0f1;
+            border-bottom: 2px dashed #b2dfdb;
         }
         .exercise-question {
             font-weight: 600;
@@ -229,6 +236,28 @@
             border-radius: 5px;
             margin-top: 10px;
         }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            margin-left: -60px;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
         #back-to-top {
             display: none;
             position: fixed;
@@ -250,12 +279,12 @@
         
         /* Dark Mode Styles */
         body.dark-mode {
-            background-color: #263238; /* Dark Blue Gray */
-            color: #eceff1; /* Light Blue Gray */
+            background-color: #1a202c;
+            color: #e2e8f0;
         }
         .dark-mode .topic-card {
-            background-color: #37474f; /* Lighter Blue Gray */
-            border-color: #455a64; /* Even Lighter Blue Gray */
+            background-color: #2d3748;
+            border-color: #4a5568;
         }
         .dark-mode .section-title {
             color: #80cbc4; /* Light Teal */
@@ -303,7 +332,7 @@
             top: 0;
             left: 0;
             height: 5px;
-            background-color: #8e44ad;
+            background: linear-gradient(to right, #4ade80, #3b82f6);
             width: 0%;
             z-index: 100;
             transition: width 0.2s;
@@ -349,7 +378,8 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
-        <header class="text-center mb-16 relative">
+        <header class="text-center mb-16 relative overflow-hidden">
+            <div id="header-bg" class="absolute top-0 left-0 w-full h-full opacity-10"></div>
             <h1 class="text-5xl md:text-6xl font-bold" style="color: #2c3e50;">Algebra and Functions</h1>
             <p class="mt-4 text-xl" style="color: #7f8c8d;">
                 The most heavily weighted domain (32-42%) on the EST II Math Level 1 exam. This section covers algebraic manipulation, solving equations, and understanding the properties of various functions.
@@ -402,9 +432,9 @@
             </nav>
 
             <section id="algebraic-expressions" class="topic-card animate__animated animate__fadeInUp">
-                <h2 class="section-title"><i class="fas fa-calculator"></i> 1. Algebraic Expressions</h2>
+                <h2 class="section-title"><svg class="inline-block w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M12 8h.01M15 8h.01M15 14h.01M18 17h.01M12 17h.01M9 17h.01"></path></svg> 1. Algebraic Expressions</h2>
                 <p>
-                    This foundational part of algebra deals with manipulating expressions that contain variables, constants, and operational symbols. Mastery of these techniques is essential for solving equations and working with functions.
+            This foundational part of algebra deals with manipulating expressions that contain <span class="tooltip" data-tooltip="A symbol for a number we don't know yet. It is usually a letter like x or y.">variables</span>, constants, and operational symbols. Mastery of these techniques is essential for solving equations and working with functions.
                 </p>
 
                 <h3 id="simplifying-polynomials" class="subsection-title">Simplifying Polynomials and Exponents</h3>
@@ -625,6 +655,10 @@
                 </div>
                 <button id="submit-quiz-1" class="interactive-button">Submit Quiz</button>
                 <div id="quiz-results-1" class="quiz-results" style="display:none;"></div>
+                <div id="share-buttons-1" class="mt-4" style="display:none;">
+                    <button class="interactive-button" onclick="shareOnTwitter(1)">Share on Twitter</button>
+                    <button class="interactive-button" onclick="shareOnFacebook(1)">Share on Facebook</button>
+                </div>
             </section>
 
             <section id="solving-equations" class="topic-card animate__animated animate__fadeInUp">
@@ -1532,11 +1566,28 @@
             </section>
 
 
-            <section id="equation-solver" class="topic-card animate__animated animate__fadeInUp">
-                <h2 class="section-title"><i class="fas fa-magic"></i> Equation Solver</h2>
-                <input type="text" id="equation-input" class="interactive-input" placeholder="e.g., 2x + 4 = 10">
-                <button id="solve-equation" class="interactive-button">Solve</button>
-                <div id="equation-solution" class="exercise-solution" style="display:none;"></div>
+
+            <section id="interactive-practice" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-keyboard"></i> Interactive Practice</h2>
+                <div id="interactive-practice-container"></div>
+                <button id="check-practice-answer" class="interactive-button">Check Answer</button>
+                <div id="interactive-practice-feedback" class="interactive-feedback"></div>
+            </section>
+
+            <section id="custom-quiz" class="topic-card animate__animated animate__fadeInUp">
+                <h2 class="section-title"><i class="fas fa-vial"></i> Custom Quiz</h2>
+                <div class="flex flex-wrap gap-4">
+                    <div>
+                        <label for="num-questions" class="block font-bold">Number of Questions:</label>
+                        <input type="number" id="num-questions" class="interactive-input" value="5" min="1" max="10">
+                    </div>
+                    <div>
+                        <label class="block font-bold">Topics:</label>
+                        <div id="custom-quiz-topics" class="flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+                <button id="generate-custom-quiz" class="interactive-button mt-4">Generate Quiz</button>
+                <div id="custom-quiz-container" class="mt-4"></div>
             </section>
 
             <section id="weekly-challenge" class="topic-card animate__animated animate__fadeInUp">
@@ -1576,6 +1627,18 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.topic-card').forEach(card => {
+                observer.observe(card);
+            });
+
             const canvas = document.getElementById('unitCircleCanvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
@@ -2036,23 +2099,97 @@
             const equationInput = document.getElementById('equation-input');
             const equationSolution = document.getElementById('equation-solution');
 
-            solveEquationButton.addEventListener('click', () => {
-                const expr = equationInput.value.trim();
-                if (!expr) {
-                    equationSolution.innerHTML = `<p style="color: #c0392b;">Please enter an equation to solve.</p>`;
-                    equationSolution.style.display = 'block';
-                    return;
+            const practiceProblems = [
+                { question: "Solve for x: \\(2x + 5 = 11\\)", answer: "3" },
+                { question: "Solve for y: \\(3y - 2 = 10\\)", answer: "4" },
+                { question: "Factor: \\(x^2 - 16\\)", answer: "(x-4)(x+4)" }
+            ];
+            let currentProblemIndex = 0;
+
+            function loadPracticeProblem() {
+                const container = document.getElementById('interactive-practice-container');
+                container.innerHTML = `
+                    <p class="exercise-question">${practiceProblems[currentProblemIndex].question}</p>
+                    <input type="text" id="practice-input" class="interactive-input" placeholder="Your answer">
+                `;
+                MathJax.typesetPromise();
+            }
+
+            document.getElementById('check-practice-answer').addEventListener('click', () => {
+                const userAnswer = document.getElementById('practice-input').value.trim();
+                const feedback = document.getElementById('interactive-practice-feedback');
+                if (userAnswer === practiceProblems[currentProblemIndex].answer) {
+                    showNotification("Correct! Great job.", "success");
+                    currentProblemIndex = (currentProblemIndex + 1) % practiceProblems.length;
+                    setTimeout(loadPracticeProblem, 1000);
+                } else {
+                    showNotification("Not quite. Try again!", "error");
                 }
-                try {
-                    const eq = algebra.parse(expr);
-                    const solution = eq.solveFor("x");
-                    equationSolution.innerHTML = `<p><strong>Solution:</strong> \\(x = ${solution}\\)</p>`;
-                    equationSolution.style.display = 'block';
-                    MathJax.typesetPromise();
-                } catch (e) {
-                    equationSolution.innerHTML = `<p style="color: #c0392b;">Error: Could not solve the equation. Please check the syntax.</p>`;
-                    equationSolution.style.display = 'block';
+            });
+
+            loadPracticeProblem();
+
+            function shareOnTwitter(quizNum) {
+                const score = document.getElementById(`quiz-results-${quizNum}`).querySelector('h4').textContent;
+                const text = `I just scored ${score} on the Algebra and Functions quiz!`;
+                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+            }
+
+            function shareOnFacebook(quizNum) {
+                const score = document.getElementById(`quiz-results-${quizNum}`).querySelector('h4').textContent;
+                const text = `I just scored ${score} on the Algebra and Functions quiz!`;
+                const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+            }
+
+            function showNotification(message, type) {
+                const container = document.getElementById('notification-container');
+                const notification = document.createElement('div');
+                notification.className = `p-4 rounded-md shadow-lg text-white ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+                notification.textContent = message;
+                container.appendChild(notification);
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            const headerBg = document.getElementById('header-bg');
+            let angle = 0;
+            function animateHeader() {
+                angle += 0.05;
+                headerBg.style.background = `
+                    linear-gradient(${angle}deg, rgba(255, 255, 255, 0) 0%, rgba(178, 223, 219, 0.5) 50%, rgba(255, 255, 255, 0) 100%)
+                `;
+                requestAnimationFrame(animateHeader);
+            }
+            animateHeader();
+
+            const music = document.getElementById('background-music');
+            const playPauseBtn = document.getElementById('play-pause-music');
+            playPauseBtn.addEventListener('click', () => {
+                if (music.paused) {
+                    music.play();
+                    playPauseBtn.textContent = 'Pause Music';
+                } else {
+                    music.pause();
+                    playPauseBtn.textContent = 'Play Music';
                 }
+            });
+
+            const customQuizTopicsContainer = document.getElementById('custom-quiz-topics');
+            const allTopics = ["Simplifying Polynomials", "Factoring", "Solving Linear Equations", "Solving Quadratic Equations"];
+            allTopics.forEach(topic => {
+                const checkbox = document.createElement('div');
+                checkbox.innerHTML = `<input type="checkbox" id="topic-${topic.replace(/\s+/g, '-')}" value="${topic}" checked><label for="topic-${topic.replace(/\s+/g, '-')}">${topic}</label>`;
+                customQuizTopicsContainer.appendChild(checkbox);
+            });
+
+            document.getElementById('generate-custom-quiz').addEventListener('click', () => {
+                const numQuestions = document.getElementById('num-questions').value;
+                const selectedTopics = Array.from(document.querySelectorAll('#custom-quiz-topics input:checked')).map(el => el.value);
+                const quizContainer = document.getElementById('custom-quiz-container');
+                quizContainer.innerHTML = `<p>Generated a quiz with ${numQuestions} questions on the topics: ${selectedTopics.join(', ')}.</p>`;
             });
 
             // Dark mode toggle logic
